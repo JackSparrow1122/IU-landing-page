@@ -35,21 +35,23 @@ function BbaAdmissionOfferings() {
   return (
     <div className="px-8 md:px-16 py-4 md:py-8 bg-[#f3f4f6] poppins-regular">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-8 text-[#135883]" data-aos="fade-up">
-        Why Choose BBA at Indira University?
+Why Choose Us? 
       </h2>
+            <h2 className="text-xl md:text-2xl font-bold text-center mb-4 md:mb-8 text-[#135883]" data-aos="fade-up">
+At the School of Business, we provide an unmatched management education built on excellence      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 justify-center max-w-auto mx-auto md:max-w-4xl">
         {[FaBullhorn, FaHandshake, FaRegCalendarAlt, FaChartLine, FaUsers, FaRegClipboard].map((Icon, index) => (
           <div key={index} className="bg-[#135783] p-4 shadow-xl flex flex-col items-start text-left relative rounded-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
-            <Icon size={40} className="text-white mb-4 icon" />
+            <Icon size={40} className="text-[#FECD46] mb-4 icon" />
             <p className="text-md md:text-lg font-semibold text-white">
               {[
-                'Best private BBA college with 100% placement assistance',
-                'Top recruiters like JusPay, KPMG, Amazon, Accenture, Airtel, and Zomato',
-                'BBA program with placement in leading MNCs and startups',
-                'Industry-focused BBA course details with hands-on projects & internships',
-                'BBA course eligibility – Open to students from any stream after 12th',
-                'Modern campus, expert faculty, global exposure, massive brand events, GUSTO, Sports facilities',
+                'Advanced Infrastructure: Smart classrooms, business labs, and a digital library designed for interactive learning. ',
+                'Strong Placements: Consistent recruitment by top companies, supported by dedicated career guidance. ',
+                'Vibrant Campus Life: National fests, industry talks, and cultural events that build confidence and networks. ',
+                'Industry Readiness Training: Structured modules in communication, aptitude, and interview skills to ensure corporate readiness. ',
+                'Growing Alumni Network: Access to mentors and professionals across industries. ',
+                'Experiential Learning: Learn through simulations, expert sessions, and mandatory internships. ',
               ][index]}
             </p>
             <div className="circle absolute bottom-[-20px] right-[-20px] w-12 h-12 bg-white rounded-full shadow-2xl"></div>

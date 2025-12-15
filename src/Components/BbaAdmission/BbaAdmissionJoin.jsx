@@ -1,30 +1,47 @@
 // src/components/MarketingManagementJoin.js
-import React from 'react';
-import backgroundImage from '../../assets/Images/nb-abstract.avif'; // Adjust the path as necessary
-import ApplyButton from '../ApplyButton'; // Import the ApplyButton component
+import React from "react";
+import backgroundImage from "../../assets/Images/nb-abstract.avif";
+import { FiDownload } from "react-icons/fi";
 
 function MarketingManagementJoin() {
+  const handleDownloadBrochure = () => {
+    const link = document.createElement("a");
+    link.href = "/brochure/BBA-Brochure.pdf";
+    link.download = "BBA-Brochure.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       {/* Background image */}
       <div
-        className="bg-cover bg-center absolute top-0 left-0 w-full h-full"
+        className="bg-cover bg-center absolute inset-0"
         style={{ backgroundImage: `url(${backgroundImage})` }}
-      ></div>
+      />
 
-      {/* Green overlay with updated gradient */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#003C84] via-[#018697] to-[#018697] opacity-70 z-10"></div>
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#003C84] via-[#018697] to-[#018697] opacity-70 z-10" />
 
       {/* Text content */}
-      <div className="relative z-20 px-8 md:px-16 py-4">
-        <div className="text-center mb-2">
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-6 mt-2">
-            Apply for BBA today to secure admission at Indira University, one of the top BBA colleges in Pune.
+      <div className="relative z-20 px-8 md:px-16 py-10">
+        <div className="text-center">
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+    Your business career starts with a conversation. 
           </h1>
-          <p className="text-xl text-gray-200 mb-4 md:mb-8">
-            Your journey to a successful career starts here!
-          </p>
-          <ApplyButton /> {/* Using the ApplyButton component */}
+
+          <p className="text-xl text-gray-200 mb-6">
+Your detailed guide to specializations, infrastructure, placements, and admission process.           </p>
+
+          {/* Download Brochure Button */}
+          <button
+            onClick={handleDownloadBrochure}
+            className="inline-flex items-center gap-2 bg-white text-[#003C84] font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300"
+          >
+            <FiDownload size={20} />
+            Download Brochure
+          </button>
         </div>
       </div>
     </div>

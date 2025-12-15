@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
- 
+import React, { useEffect, useState } from "react";
+
 import logo1 from "../assets/Images/bba-logo/Wireframe - 1.avif";
 import logo2 from "../assets/Images/bba-logo/Wireframe - 2.avif";
 import logo3 from "../assets/Images/bba-logo/Wireframe - 3.avif";
@@ -32,88 +32,105 @@ import logo29 from "../assets/Images/bba-logo/Wireframe - 29.avif";
 import logo30 from "../assets/Images/bba-logo/Wireframe - 30.avif";
 import logo31 from "../assets/Images/bba-logo/Wireframe - 31.avif";
 import logo32 from "../assets/Images/bba-logo/Wireframe - 32.avif";
- 
+
 const CompRecruiter = () => {
   const [isVisible, setIsVisible] = useState(true);
- 
+
   const logos = [
     logo1, logo2, logo3, logo4, logo5, logo6,
     logo7, logo8, logo9, logo11, logo12,
-    logo13, logo14, logo15, logo16, logo17, 
-    logo19, logo20, logo21,  logo23, logo24,
-    logo25, logo26, logo27, logo28, logo29, 
+    logo13, logo14, logo15, logo16, logo17,
+    logo19, logo20, logo21, logo23, logo24,
+    logo25, logo26, logo27, logo28, logo29,
     logo31, logo32, logo10, logo22, logo18, logo30,
   ];
- 
+
   useEffect(() => {
     const handleVisibilityChange = () => {
       setIsVisible(!document.hidden);
     };
- 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
- 
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
- 
+
   return (
-    <div className="logo-slider-section py-4 roboto-regular">
-      <div className="text-center mb-4">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-4xl font-bold text-[#135883]">
-          <span >Top Recruiters</span>
+    <div className="logo-slider-section py-6 roboto-regular bg-white">
+      {/* Heading */}
+      <div className="text-center mb-6">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#135883]">
+          Top <span className="bg-[#135783] text-white rounded-3xl px-5">Recruiters</span>
         </h2>
       </div>
+
+      {/* Slider */}
       <div className="logo-slider relative overflow-hidden w-full">
-        <div className={`logo-slider-track flex ${isVisible ? 'animate' : ''}`}>
-          {/* Map over the logos and display them */}
+        <div className={`logo-slider-track flex ${isVisible ? "animate" : ""}`}>
+          {/* Logos */}
           {logos.map((logo, index) => (
-            <div key={index} className="logo-slide flex-none mx-3  md:mx-5">
+            <div
+              key={index}
+              className="logo-slide flex-none mx-3 md:mx-5
+                         bg-white rounded-xl
+                         border border-[#2899A4]/40
+                         shadow-[0_6px_20px_rgba(40,153,164,0.25)]
+                         transition-all duration-300
+                         hover:shadow-[0_12px_35px_rgba(40,153,164,0.45)]
+                         hover:-translate-y-1"
+            >
               <img
                 src={logo}
                 alt={`Recruiter Logo ${index + 1}`}
-                className="h-16 md:h-24 max-w-[160px] object-contain"
+                className="h-16 md:h-24 max-w-[160px] object-contain p-4"
               />
             </div>
           ))}
- 
-          {/* Duplicate set for seamless loop */}
+
+          {/* Duplicate for seamless loop */}
           {logos.map((logo, index) => (
-            <div key={`duplicate-${index}`} className="logo-slide flex-none mx-3 sm:mx-4 md:mx-5">
+            <div
+              key={`duplicate-${index}`}
+              className="logo-slide flex-none mx-3 md:mx-5
+                         bg-white rounded-xl
+                         border border-[#2899A4]/40
+                         shadow-[0_6px_20px_rgba(40,153,164,0.25)]
+                         transition-all duration-300
+                         hover:shadow-[0_12px_35px_rgba(40,153,164,0.45)]
+                         hover:-translate-y-1"
+            >
               <img
                 src={logo}
                 alt={`Recruiter Logo ${index + 1}`}
-                className="h-16 md:h-24 max-w-[160px] object-contain"
+                className="h-16 md:h-24 max-w-[160px] object-contain p-4"
               />
             </div>
           ))}
         </div>
- 
-        <div className="absolute left-0 top-0 h-full w-24  to-transparent z-10" />
-        <div className="absolute right-0 top-0 h-full w-24 to-transparent z-10" />
+
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10" />
       </div>
- 
+
+      {/* CSS */}
       <style>{`
         .logo-slider {
-          position: relative;
           padding: 0 20px;
         }
- 
+
         .logo-slider-track {
-          display: flex;
           width: fit-content;
         }
- 
+
         .logo-slider-track.animate {
           animation: slide 40s linear infinite;
         }
- 
-        .logo-slide {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+
+        .logo-slider:hover .logo-slider-track {
+          animation-play-state: paused;
         }
- 
+
         @keyframes slide {
           0% {
             transform: translateX(0);
@@ -122,11 +139,7 @@ const CompRecruiter = () => {
             transform: translateX(-50%);
           }
         }
- 
-        .logo-slider:hover .logo-slider-track {
-          animation-play-state: paused;
-        }
- 
+
         @media (max-width: 640px) {
           .logo-slider-track.animate {
             animation-duration: 30s;
@@ -136,5 +149,5 @@ const CompRecruiter = () => {
     </div>
   );
 };
- 
+
 export default CompRecruiter;

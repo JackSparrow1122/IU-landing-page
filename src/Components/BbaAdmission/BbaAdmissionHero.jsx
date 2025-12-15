@@ -1,113 +1,87 @@
-import React, { useEffect } from "react";
-import gsap from "gsap";
-import RightSideSection from "../RightSideSection";
-import bgImage from '../../assets/Images/Landing Page _ IU_1jpg.jpg';
-import NPFWidget from '../../Components/NPFWidget';
+import { useState, useEffect, useMemo } from "react";
+import backgroundImage from "../../assets/hero.jpg";
+import NPFWidget from "../NPFWidget"; // Ensure NPFWidget.jsx exists and exports a valid component
 
-function BbaAdmission() {
+function CompHero() {
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+
+  const words = useMemo(
+    () => [
+      "Lead.",
+      "Excel.",
+      "Inspire."
+    ],
+    []
+  );
+
   useEffect(() => {
-    gsap.to(".stat-box", {
-      y: "-10px",
-      repeat: -1,
-      yoyo: true,
-      duration: 1,
-      ease: "power1.inOut",
-    });
-  }, []);
+    const handleTyping = () => {
+      const currentWord = words[currentWordIndex];
+
+      if (!isDeleting) {
+        if (currentText === currentWord) {
+          setTimeout(() => setIsDeleting(true), 1000); // Single pause before deleting
+          return;
+        }
+        setCurrentText(currentWord.substring(0, currentText.length + 1));
+      } else {
+        if (currentText === "") {
+          setIsDeleting(false);
+          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+          return;
+        }
+        setCurrentText(currentWord.substring(0, currentText.length - 1));
+      }
+    };
+
+    const timeout = setTimeout(handleTyping, isDeleting ? 80 : 120); // Single timeout declaration
+    return () => clearTimeout(timeout);
+  }, [currentText, isDeleting, currentWordIndex, words]);
 
   return (
     <div
-      className="px-8 md:px-16 relative text-black flex flex-col md:flex-row items-center h-auto space-x-2"
-      style={{
-        fontFamily: "Helvetica Neue Black, sans-serif",
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
+      className="font-baskervville-regular px-4 sm:px-8 md:px-16 relative pt-8 bg-cover bg-right md:bg-center bg-no-repeat text-white flex flex-col md:flex-row items-center md:items-start"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      {/* Left side content */}
-      <div className="flex flex-col items-start z-20 w-full md:w-1/2 justify-center">
-        <h1
-          className="text-3xl md:text-4xl text-[#000000] font-semibold leading-tight mb-1 md:mb-6 mt-2"
-          data-aos="fade-up"
-        >
-          Build Your Future with <span className="font-bold text-[#000000]">BBA</span>{" "}
-          at School of Business (Indira University)
-        </h1>
+      {/* Black Overlay for text contrast */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 z-20 pointer-events-none"></div>
 
-        <div
-          className="p-6 max-w-md w-full shadow-md mt-6"
-          data-aos="fade-right"
+      {/* Custom style for selected text */}
+      <style>
+        {`
+          ::selection {
+            background-color: #F37021;
+            color: #ffffff;
+          }
+        `}
+      </style>
+
+      {/* Left side content */}
+      <div className="flex flex-col items-center md:items-start z-20 w-full md:w-1/2 text-center md:text-left">
+        <h1 className="text-[40px] sm:text-[50px] md:text-[60px] text-[#ffffff] font-semibold leading-tight mb-6">
+          <span className="text-[#FECD46] font-bold mech-hero-wrapper">Build Your Business Acumen with Our BBA
+          </span>
+        </h1>
+        <p className="mt-4 text-lg sm:text-xl md:text-2xl">
+A Degree Designed for Innovation, Impact & Success.       </p>
+      </div>
+
+      {/* Right side content (NPF Widget) */}
+      <div className="flex justify-center md:justify-end w-full md:w-1/2 z-30 mt-8 md:mt-0">
+        <div 
+          className="p-6 max-w-md w-full shadow-md"
           style={{
             backgroundColor: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          {/* <form className="space-y-4">
-            <div>
-              <input
-                type="text"
-                id="name"
-                className="w-full p-1.5 bg-gradient-to-r from-[#FFFFFF] via-[#f0f8ff] to-[#d6f0ff] text-black rounded border border-[#2A9DA2] focus:outline-none focus:ring-2 focus:ring-[#2A9DA2] backdrop-blur-md"
-                placeholder="Enter your name"
-                required
-              />
-            </div>
-
-            <div>
-              <input
-                type="email"
-                id="email"
-                className="w-full p-1.5 bg-gradient-to-r from-[#FFFFFF] via-[#f0f8ff] to-[#d6f0ff] text-black rounded border border-[#2A9DA2] focus:outline-none focus:ring-2 focus:ring-[#2A9DA2] backdrop-blur-md"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
-
-            <div>
-              <input
-                type="tel"
-                id="mobile"
-                className="w-full p-1.5 bg-gradient-to-r from-[#FFFFFF] via-[#f0f8ff] to-[#d6f0ff] text-black rounded border border-[#2A9DA2] focus:outline-none focus:ring-2 focus:ring-[#2A9DA2] backdrop-blur-md"
-                placeholder="Enter your mobile number"
-                required
-              />
-            </div>
-
-            <div>
-              <select
-                id="course"
-                className="w-full p-1.5 bg-gradient-to-r from-[#FFFFFF] via-[#f0f8ff] to-[#d6f0ff] text-black rounded border border-[#2A9DA2] focus:outline-none focus:ring-2 focus:ring-[#2A9DA2] backdrop-blur-md"
-                required
-              >
-                <option value="">Select Course</option>
-                <option value="marketing-management">Marketing Management</option>
-                <option value="financial-management">Financial Management</option>
-                <option value="human-resource-management">Human Resource Management</option>
-                <option value="logistics-supply-chain-management">Logistics & Supply Chain Management</option>
-                <option value="international-business">International Business</option>
-                <option value="banking-financial-services">Banking & Financial Services</option>
-                <option value="digital-marketing">Digital Marketing</option>
-                <option value="innovation-entrepreneurship">Innovation & Entrepreneurship</option>
-              </select>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="w-full py-2 bg-[#299BA1] text-white rounded-lg border-2 border-[#ffffff] hover:bg-[#135783] hover:border-2 hover:border-[#2A9DA2] hover:text-[#ffffff] transition duration-100 ease-in-out"
-              >
-                Submit
-              </button>
-            </div>
-          </form> */}
-
-<NPFWidget />
+          <NPFWidget />
         </div>
       </div>
-
-      <RightSideSection />
     </div>
   );
 }
 
-export default BbaAdmission;
+
+export default CompHero;

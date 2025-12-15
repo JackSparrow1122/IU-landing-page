@@ -1,7 +1,8 @@
 import React from "react";
 
 // Import images
-import logo from "../assets/Images/IU Logo Cobine Final.avif";
+import logo from "../assets/IULogo.png";
+import rightLogo from "../assets/IU-website.png"; // 👈 right side logo (change image if needed)
 
 function Navbar() {
   const pulseTextAnimation = {
@@ -24,26 +25,25 @@ function Navbar() {
 
   return (
     <>
-      {/* Inject CSS into the page */}
       <style>{pulseKeyframes}</style>
 
-      {/* Navbar (not fixed, so it will scroll with the page) */}
       <nav className="bg-gray-900 shadow-lg w-full">
         <div className="mx-auto flex flex-col sm:flex-row items-center justify-between px-4 md:px-16 py-0 md:py-2">
-          {/* Left Logo */}
+
+          {/* LEFT LOGO */}
           <div className="mt-2">
             <a href="/">
               <img
                 src={logo}
-                alt="Logo"
+                alt="Left Logo"
                 className="h-auto max-w-28 md:max-w-42"
               />
             </a>
           </div>
 
-          {/* Centered Text with Animation and Effects */}
+          {/* CENTER TEXT */}
           <div
-            className="flex-grow text-center text-white text-md  md:text-3xl font-bold  sm:mt-0"
+            className="flex-grow text-center text-white text-md md:text-3xl font-bold"
             style={pulseTextAnimation}
           >
             Indira University <br />
@@ -51,6 +51,16 @@ function Navbar() {
               (formerly known as Indira Group of Institutes)
             </span>
           </div>
+
+          {/* RIGHT LOGO */}
+          {/* <div className="mt-2">
+            <img
+              src={rightLogo}
+              alt="Right Logo"
+              className="h-auto max-w-24 md:max-w-36"
+            />
+          </div> */}
+
         </div>
       </nav>
     </>

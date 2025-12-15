@@ -1,108 +1,46 @@
-import React, { useEffect, useState } from "react";
-// Import the images
-import Image1 from "../../assets/Images/isbs-1.avif"; // Add your first image
-import Image2 from "../../assets/Images/isbs-std.avif"; // Add your second image
-import Image3 from "../../assets/Images/isbs-class.avif"; // Add your third image
+import React, { useEffect } from "react";
+import Image1 from "../../assets/program overview 2.jpg";
 
-// Import AOS and its CSS
+// AOS
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 function BbaAdmissionOverview() {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  // Update screen width on resize
   useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Initialize AOS
     AOS.init({
-      duration: 1000, // Animation duration (in ms)
-      easing: "ease-in-out", // Easing function for the animation
-      once: true, // Whether the animation should happen only once
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
     });
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
   }, []);
 
-  // Determine the inline styles for responsive behavior
-  const firstImageStyle = {
-    width: screenWidth >= 800 ? "65%" : "100%",
-    height: "auto", // Ensure image adjusts to screen size properly
-  };
-
-  const secondPartStyle = {
-    width: screenWidth >= 800 ? "30%" : "100%",
-    height: "auto", // Keep the height consistent with the left part
-  };
-
   return (
-    <div className="flex flex-col md:flex-row-reverse justify-between items-start space-y-8 md:space-y-0 md:space-x-8 px-8 md:px-16 py-3 md:py-6 poppins-regular gap-x-8 overflow-hidden">
+    <div className="flex flex-col md:flex-row-reverse items-center gap-8 px-8 md:px-16 py-6 poppins-regular overflow-hidden">
       {/* Left Part: Program Overview */}
-      <div className="flex-1" >
-        {/* Small "BBA Admission" Text above heading */}
-        <p className="text-sm md:text-lg text-[#2896A0] mb-2">
-          Program Overview
-        </p>
-
-        <h2 className="text-3xl md:text-4xl font-bold text-[#135883] mb-2 md:mb-4">
-          BBA Programme
+      <div className="flex-1" data-aos="fade-right">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#135883] mb-4">
+          Shape Your Future with Our Premier BBA Programme
         </h2>
 
         <p className="text-sm md:text-lg text-gray-600 tracking-wide">
-          Looking for the best BBA colleges in Pune? Indira Group of Institutes
-          an established institution with a 30-year legacy is now Indira
-          University, and offers a top BBA program designed for students who
-          want to build a successful career across diverse industries. Our BBA
-          admissions 2025 are now open, giving all ambitious students their
-          chance to specialize in Marketing, Finance, HR, International
-          Relations, Logistics & Supply Chain, Banking and Financial Services,
-          Digital Marketing, Innovation, and Entrepreneurship.
+          Our BBA programme is designed to transform aspiring students into
+          industry-ready business professionals. As a top choice in Pune, we
+          offer a robust curriculum that blends core management principles with
+          modern specializations in Marketing, Finance, HR, Digital Marketing,
+          Logistics, and more. Through case studies, live projects, and
+          internships, students gain both knowledge and practical expertise.
+          Admissions for 2025 are now open—begin your journey in business
+          leadership today.
         </p>
       </div>
 
-      {/* Right Part: First and Second Images */}
-      <div className="flex-1 bg-white flex flex-col md:flex-row gap-4 md:gap-0">
-        {/* First Image - Takes 100% width on small screens, 65% on large screens */}
-        <div className="h-full flex-grow" style={firstImageStyle}>
-          <div className="w-full h-auto">
-            <img
-              src={Image1}
-              alt="Image 1"
-              className="w-full h-full md:h-[50vh] object-cover" // Ensures image fills the container
-            />
-          </div>
-        </div>
-
-        {/* Gap - 5% */}
-        <div className="w-[2%] hidden md:block"></div>
-
-        {/* Second Part - Two Vertical Images in 100% width on small and medium screens, 30% on large screens */}
-        <div className="flex flex-col gap-4 h-full " style={secondPartStyle}>
-          {/* First Image with full overlay text and black overlay */}
-          <div className="relative w-full h-full">
-            <img
-              src={Image2}
-              alt="Image 2"
-              className="w-full h-full hidden md:block object-cover rounded-md" // Ensures image fills the container
-            />
-          </div>
-
-          {/* Second Image below with padding */}
-          <div className="w-full h-full">
-            <img
-              src={Image3}
-              alt="Image 3"
-              className="w-full h-full object-cover hidden md:block rounded-md" // Ensures image fills the container
-            />
-          </div>
-        </div>
+      {/* Right Part: Single Image */}
+      <div className="flex-1 w-full" data-aos="fade-left">
+        <img
+          src={Image1}
+          alt="BBA Programme"
+          className="w-full h-[250px] md:h-[420px] object-cover rounded-lg shadow-lg"
+        />
       </div>
     </div>
   );

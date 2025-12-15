@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useState } from "react";
 
-// Import real images from URLs
+// Images
 import ankitImage from "../../assets/Images/test-user/Ankit_Jain.avif";
 import misbahImage from "../../assets/Images/test-user/Misbah_Aryan.avif";
 import akankshaImage from "../../assets/Images/test-user/Akanksha_Jain.avif";
@@ -9,138 +9,155 @@ import salilImage from "../../assets/Images/test-user/Salil_Deshpande.avif";
 import krishnaImage from "../../assets/Images/test-user/Krishna-prajapat.avif";
 import giteshImage from "../../assets/Images/test-user/Gitesh-Agarwal.avif";
 
-// Updated Testimonials
 const testimonials = [
   {
-    name: "Ankit Jain - Associate, JP Morgan Chase",
-    text: `"Indira is a fantastic college that offers excellent faculty and a wide range of extracurricular activities throughout your academic journey. The teaching-learning structure is well-balanced, combining theoretical and practical learning, which builds a strong foundation for personal and professional growth."`,
+    title:
+      "Indira is a fantastic college that offers excellent faculty and a wide range of extracurricular activities throughout your academic journey. The teaching-learning structure is well-balanced, combining theoretical and practical learning, which builds a strong foundation for personal and professional growth.",
+    text: "Ankit Jain",
+    subtitle: "Associate, JP Morgan Chase",
     image: ankitImage,
   },
   {
-    name: "Misbah Afshari - CEO, DOT",
-    text: `"I had countless memorable moments at Indira. The college gave me some of the best experiences, not only on campus but also through classroom sessions and real-world exposure. Indira helped me stand out in this competitive world. Even as a foreign student, I never felt like an outsider. The faculty and students were incredibly supportive and taught me valuable lessons. I sincerely thank all the faculty members for treating us like their own children."`,
+    title:
+      "I had countless memorable moments at Indira. The college gave me some of the best experiences, not only on campus but also through classroom sessions and real-world exposure. Indira helped me stand out in this competitive world. Even as a foreign student, I never felt like an outsider.",
+    text: "Misbah Afshari",
+    subtitle: "CEO, DOT",
     image: misbahImage,
   },
   {
-    name: "Akanksha Jain - Founder & CEO, Central Convoy",
-    text: `"Indira helped me realize my true potential and prepared me to seize new opportunities. During my time there, I was entrusted with various responsibilities that shaped my personality and enhanced my leadership skills. The teachers at Indira are dedicated and truly focus on the holistic development of students."`,
+    title:
+      "Indira helped me realize my true potential and prepared me to seize new opportunities. During my time there, I was entrusted with various responsibilities that shaped my personality and enhanced my leadership skills.",
+    text: "Akanksha Jain",
+    subtitle: "Founder & CEO, Central Convoy",
     image: akankshaImage,
   },
   {
-    name: "Tanisha Barnwal - Hedge Fund Analyst, Northern Trust",
-    text: `"My enriching three-year journey at Indira BBA helped me improve my skills, gain confidence, and focus on self-development. Through presentations, academic activities, college fests, cultural events, and industrial visits, I gained both immense knowledge and unforgettable experiences."`,
+    title:
+      "My enriching three-year journey at Indira BBA helped me improve my skills, gain confidence, and focus on self-development. Through presentations, academic activities, college fests, cultural events, and industrial visits.",
+    text: "Tanisha Barnwal",
+    subtitle: "Hedge Fund Analyst, Northern Trust",
     image: tanishaImage,
   },
   {
-    name: "Salil Deshpande - Senior Analyst, Deutsche Bank",
-    text: `"Indira nurtured my passion for learning and gave me a platform to grow both personally and professionally. Everyone needs an opportunity to enhance their personality, and Indira provided that space for me."`,
+    title:
+      "Indira nurtured my passion for learning and gave me a platform to grow both personally and professionally. Everyone needs an opportunity to enhance their personality, and Indira provided that space for me.",
+    text: "Salil Deshpande",
+    subtitle: "Senior Analyst, Deutsche Bank",
     image: salilImage,
   },
   {
-    name: "Krishna Prajapat - Vice President, Anand Rathi Wealth Limited",
-    text: `"Indira provides excellent career guidance and campus placement support, helping students build successful careers and stay ahead in the competitive job market. The college offers numerous placement opportunities, backed by highly qualified and experienced faculty members."`,
+    title:
+      "Indira provides excellent career guidance and campus placement support, helping students build successful careers and stay ahead in the competitive job market.",
+    text: "Krishna Prajapat",
+    subtitle: "Vice President, Anand Rathi Wealth Limited",
     image: krishnaImage,
   },
   {
-    name: "Gitesh Agarwal - CEO & Founder, Vennplay",
-    text: `"Indira boasts a vast and beautiful campus with outstanding infrastructure. There are dedicated buildings for BBA, BBA IB, BBA CA, and B.Sc. programs. The faculty members are highly knowledgeable, and the quality of teaching is exceptional. They provide a well-rounded perspective on every subject."`,
+    title:
+      "Indira boasts a vast and beautiful campus with outstanding infrastructure. The faculty members are highly knowledgeable, and the quality of teaching is exceptional.",
+    text: "Gitesh Agarwal",
+    subtitle: "CEO & Founder, Vennplay",
     image: giteshImage,
   },
 ];
 
-const Testimonials = () => {
-  const [activeDot, setActiveDot] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const intervalRef = useRef(null);
-
-  const groupedTestimonials = useMemo(() => testimonials, []);
-
-  const startAutoSlide = () => {
-    if (!isHovered && !intervalRef.current) {
-      intervalRef.current = setInterval(() => {
-        setActiveDot((prevDot) => (prevDot + 1) % groupedTestimonials.length);
-      }, 3000); 
-    }
-  };
-
-  const stopAutoSlide = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
+const TestimonialsSlider = () => {
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    startAutoSlide();
-    return () => stopAutoSlide();
-  }, [groupedTestimonials.length]);
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1 > testimonials.length - 3 ? 0 : prev + 1));
+    }, 3500);
 
-  useEffect(() => {
-    if (isHovered) stopAutoSlide();
-    else startAutoSlide();
-  }, [isHovered]);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <div
-      className="w-auto py-2 px-8 md:px-16 md:py-4 flex flex-col justify-center items-center overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-4xl overflow-x-hidden py-2 md:py-4 transition-all duration-500 ease-in-out">
-        {groupedTestimonials[activeDot] && (
-          <div
-            className="bg-white p-2 md:p-6 rounded-lg flex flex-col sm:flex-row w-full mx-auto flex-shrink-0 transition-all duration-300 ease-in-out border"
-            style={{
-              boxShadow: "0 2px 4px rgba(0, 60, 132, 0.4)",
-              borderColor: "#003C84", // Primary color for border
-            }}
-          >
-            <div className="flex-shrink-0 justify-center flex mb-1">
-              <img
-                src={groupedTestimonials[activeDot].image}
-                alt={groupedTestimonials[activeDot].name}
-                className="w-24 h-24 rounded-full"
-              />
-            </div>
-            <div className="ml-0 md:ml-6 flex flex-col justify-center">
-              <p className="text-sm md:text-lg text-black mb-4">
-                {groupedTestimonials[activeDot].text}
-              </p>
-              <div className="mt-4 text-right text-sm sm:text-base text-gray-600">
-                <p style={{ color: "#003C84" }}>{groupedTestimonials[activeDot].name}</p>
+    <div className="bg-[#F7F3EF] py-12 px-4 md:px-16 overflow-hidden">
+      <h2
+        className="text-3xl md:text-4xl font-bold text-center mb-12"
+        style={{ color: "#003C84" }}
+      >
+        What Our Alumni Say
+      </h2>
+
+      {/* Slider container */}
+      <div className="relative overflow-visible">
+        <div
+          className="flex transition-transform duration-700 ease-in-out"
+          style={{
+            transform: `translateX(-${index * (100 / 3)}%)`,
+          }}
+        >
+          {testimonials.map((item, i) => (
+            <div
+              key={i}
+              className="w-full md:w-1/3 px-3 flex-shrink-0 overflow-visible"
+            >
+              <div
+                className="relative bg-white rounded-2xl p-6 h-[300px] 
+                           border-2 border-black flex flex-col justify-between 
+                           text-center overflow-visible shadow-lg"
+                style={{ 
+                  backgroundColor: "#F7F3EF"
+                }}
+              >
+                {/* Testimonial text */}
+                <div className="flex-grow overflow-y-auto ">
+                  <h3 className="text-gray-700 text-base leading-relaxed mb-4 px-2 text-justify">
+                    "{item.title}"
+                  </h3>
+                </div>
+
+                {/* Bottom section with image on left and name on right */}
+                <div className="flex items-end justify-between mt-4">
+                  {/* Image on Left Bottom */}
+                  <div className="absolute -bottom-4 -left-4 bg-white p-1 rounded-full shadow-xl">
+                    <div className="relative">
+                      <img
+                        src={item.image}
+                        alt={item.text}
+                        className="w-20 h-20 object-cover rounded-full border-4 border-white"
+                      />
+                      {/* Outer black border that stops at image */}
+                      <div className="absolute inset-0 rounded-full border-2 border-black"></div>
+                    </div>
+                  </div>
+
+                  {/* Alumni Info - Right aligned */}
+                  <div className="text-right ml-auto">
+                    <p 
+                      className="text-lg font-semibold mb-1"
+                      style={{ color: "#135783" }}
+                    >
+                      {item.text}
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      {item.subtitle}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
-  
-      <div className="flex justify-center mt-4">
-        {groupedTestimonials.map((_, index) => (
+
+      {/* Dots */}
+      <div className="flex justify-center mt-16">
+        {Array.from({ length: testimonials.length - 2 }).map((_, i) => (
           <button
-            key={index}
-            className={`h-3 w-3 rounded-full mx-1 transition-all duration-300 ease-in-out ${
-              activeDot === index
-                ? "bg-[#003C84]" // Active dot color (Primary)
-                : "bg-[#018697]" // Inactive dot color (Secondary)
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`h-3 w-3 mx-2 rounded-full cursor-pointer transition-all ${
+              index === i ? "bg-[#135783]" : "bg-gray-300"
             }`}
-            onClick={() => setActiveDot(index)}
+            aria-label={`Go to testimonial ${i + 1}`}
           />
         ))}
       </div>
     </div>
   );
-  
 };
 
-function App() {
-  return (
-    <div className="App">
-      <h1 className="text-3xl sm:text-4xl font-bold text-center pt-4" style={{ color: "#003C84" }}>
-        What Our Alumni Say
-      </h1>
-      <Testimonials />
-    </div>
-  );
-}
-
-export default App;
+export default TestimonialsSlider;
