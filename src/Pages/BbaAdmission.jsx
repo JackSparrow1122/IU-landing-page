@@ -17,7 +17,7 @@ function BbaAdmission() {
         <BbaAdmissionHero />
         <BbaAdmissionPointers />
         <BbaAdmissionOverview />
-          <BbaAdmissionTopPlacement/>
+        <BbaAdmissionTopPlacement/>
         <Recruiter />
         <BbaAdmissionCourses />
         <BbaAdmissionInfra />
