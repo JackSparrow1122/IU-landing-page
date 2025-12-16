@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import shitaImage from "../../assets/Images/dummy.png";
+import shitaImage from "../../assets/sample.webp";
 
 const students = [
   {
@@ -61,7 +61,6 @@ const TopPlacements = () => {
 
         slider.style.transform = `translateX(${positionRef.current}px)`;
       }
-
       animationRef.current = requestAnimationFrame(animate);
     };
 
@@ -70,12 +69,12 @@ const TopPlacements = () => {
   }, [isHovered]);
 
   return (
-    <div className="px-4 md:px-16 py-6 bg-[#FECD46] overflow-hidden">
+    <div className="px-4 md:px-16 py-6 bg-[#FCC409] overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
 
         {/* LEFT CONTENT */}
         <div className="md:col-span-2">
-          <span className="inline-block mb-4 px-4 py-1 text-4xl font-semibold rounded-full bg-[#003C84] text-white">
+          <span className="inline-block mb-4 px-4 py-1 text-2xl md:text-4xl font-semibold rounded-full bg-[#003C84] text-white">
             TOP PLACEMENTS
           </span>
 
@@ -106,29 +105,21 @@ const TopPlacements = () => {
                   lg:w-[20vw]
                 "
               >
-                <div className="group  overflow-hidden bg-white ">
+                <div className="group overflow-hidden">
 
                   {/* IMAGE */}
-                  <div
-                    className="
-                      relative overflow-hidden bg-white
-                      h-64
-                      sm:h-72
-                      md:h-80
-                    "
-                  >
+                  <div className="relative overflow-hidden h-64 sm:h-72 md:h-80 bg-white">
                     <img
                       src={student.image}
                       alt={student.name}
                       className="
-                        w-full h-full
-                        object-contain
+                        w-full h-full object-cover
                         transition-transform duration-500
                         group-hover:scale-110
                       "
                     />
 
-                    {/* FEEDBACK */}
+                    {/* FEEDBACK OVERLAY */}
                     <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center px-4 text-center">
                       <p className="text-white text-sm">
                         {student.feedback}
@@ -136,12 +127,12 @@ const TopPlacements = () => {
                     </div>
                   </div>
 
-                  {/* NAME */}
-                  <div className="p-3 text-left bg-[#FECD46]">
-                    <h3 className="text-sm text-black font-semibold">
+                  {/* NAME + COMPANY (FIXED BELOW IMAGE, LEFT) */}
+                  <div className="pt-3 text-left">
+                    <h3 className="text-sm md:text-base font-semibold text-black">
                       {student.name}
                     </h3>
-                    <p className="text-xs text-black">
+                    <p className="text-xs md:text-sm text-black">
                       {student.company}
                     </p>
                   </div>

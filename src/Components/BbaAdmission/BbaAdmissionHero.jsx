@@ -7,14 +7,7 @@ function CompHero() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
-  const words = useMemo(
-    () => [
-      "Lead.",
-      "Excel.",
-      "Inspire."
-    ],
-    []
-  );
+  const words = useMemo(() => ["Lead.", "Excel.", "Inspire."], []);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -61,16 +54,20 @@ function CompHero() {
       {/* Left side content */}
       <div className="flex flex-col items-center md:items-start z-20 w-full md:w-1/2 text-center md:text-left">
         <h1 className="text-[40px] sm:text-[50px] md:text-[60px] text-[#ffffff] font-semibold leading-tight mb-6">
-          <span className="text-[#FECD46] font-bold mech-hero-wrapper">Build Your Business Acumen with Our BBA
+          Build Your Business Acumen with Our
+          <span className="text-[#FCC409] font-bold mech-hero-wrapper">
+            {" "}
+            BBA
           </span>
         </h1>
         <p className="mt-4 text-lg sm:text-xl md:text-2xl">
-A Degree Designed for Innovation, Impact & Success.       </p>
+          A Degree Designed for Innovation, Impact & Success.{" "}
+        </p>
       </div>
 
       {/* Right side content (NPF Widget) */}
       <div className="flex justify-center md:justify-end w-full md:w-1/2 z-30 mt-8 md:mt-0">
-        <div 
+        <div
           className="p-6 max-w-md w-full shadow-md"
           style={{
             backgroundColor: "rgba(0, 0, 0, 0.4)",
@@ -82,6 +79,5 @@ A Degree Designed for Innovation, Impact & Success.       </p>
     </div>
   );
 }
-
 
 export default CompHero;

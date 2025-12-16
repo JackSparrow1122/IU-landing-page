@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Image1 from "../../assets/Program Overview 2.jpg";
+import Image1 from "../../assets/Program Overview 3.jpg";
 
 // AOS
 import AOS from "aos";
@@ -39,7 +39,7 @@ function BbaAdmissionOverview() {
         <img
           src={Image1}
           alt="BBA Programme"
-          className="w-full h-[250px] md:h-[420px] object-cover rounded-lg shadow-lg"
+          className="w-full h-[250px] md:h-[420px] object-contain"
         />
       </div>
     </div>

@@ -110,7 +110,7 @@ function CompStudying() {
         <img
           src={MyImage}
           alt="Indira College"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-container"
         />
       </div>
     </div>

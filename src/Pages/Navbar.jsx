@@ -2,7 +2,7 @@ import React from "react";
 
 // Import images
 import logo from "../assets/IULogo.png";
-
+import rightLogo from "../assets/IU-Website.png";
 function Navbar() {
   const pulseTextAnimation = {
     animation: "pulseText 2s ease-in-out infinite",
@@ -52,13 +52,13 @@ function Navbar() {
           </div>
 
           {/* RIGHT LOGO */}
-          {/* <div className="mt-2">
+          <div className="mt-2">
             <img
               src={rightLogo}
               alt="Right Logo"
               className="h-auto max-w-24 md:max-w-36"
             />
-          </div> */}
+          </div>
 
         </div>
       </nav>
