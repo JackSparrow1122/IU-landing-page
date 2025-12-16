@@ -45,20 +45,20 @@ function Navbar() {
             className="flex-grow text-center text-white text-md md:text-3xl font-bold"
             style={pulseTextAnimation}
           >
-            Indira University <br />
-            <span className="text-sm md:text-base">
+           indira university school of business <br />
+            {/* <span className="text-sm md:text-base">
               (formerly known as Indira Group of Institutes)
-            </span>
+            </span> */}
           </div>
 
           {/* RIGHT LOGO */}
-          <div className="mt-2">
+          {/* <div className="mt-2">
             <img
               src={rightLogo}
               alt="Right Logo"
               className="h-auto max-w-24 md:max-w-36"
             />
-          </div>
+          </div> */}
 
         </div>
       </nav>

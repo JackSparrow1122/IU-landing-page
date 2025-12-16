@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import backgroundImage from "../../assets/hero.jpg";
-import NPFWidget from "../NPFWidget"; // Ensure NPFWidget.jsx exists and exports a valid component
+import NPFWidget from "../NPFWidget";
 
 function CompHero() {
   const [currentText, setCurrentText] = useState("");
@@ -15,7 +15,7 @@ function CompHero() {
 
       if (!isDeleting) {
         if (currentText === currentWord) {
-          setTimeout(() => setIsDeleting(true), 1000); // Single pause before deleting
+          setTimeout(() => setIsDeleting(true), 1000);
           return;
         }
         setCurrentText(currentWord.substring(0, currentText.length + 1));
@@ -29,19 +29,51 @@ function CompHero() {
       }
     };
 
-    const timeout = setTimeout(handleTyping, isDeleting ? 80 : 120); // Single timeout declaration
+    const timeout = setTimeout(handleTyping, isDeleting ? 80 : 120);
     return () => clearTimeout(timeout);
   }, [currentText, isDeleting, currentWordIndex, words]);
 
   return (
     <div
-      className="font-baskervville-regular px-4 sm:px-8 md:px-16 relative pt-8 bg-cover bg-right md:bg-center bg-no-repeat text-white flex flex-col md:flex-row items-center md:items-start"
+      className="relative min-h-screen bg-cover bg-center bg-no-repeat text-white"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      {/* Black Overlay for text contrast */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 z-20 pointer-events-none"></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40 z-10"></div>
 
-      {/* Custom style for selected text */}
+      {/* Content */}
+      <div className="relative z-20 flex min-h-screen flex-col md:flex-row items-center justify-center px-4 sm:px-8 md:px-16 gap-10">
+        {/* LEFT TEXT */}
+        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+          <h1 className="text-[32px] sm:text-[42px] md:text-[50px] lg:text-[60px] font-semibold">
+            Build Your Business Acumen with Our
+            <span className="text-[#FCC409] lg:text-[68px] font-bold">
+              {" "}
+              BBA
+            </span>
+          </h1>
+          <p className="md:text-2xl">Applications now open for 2026</p>
+          <p className="mt-6 text-base sm:text-lg md:text-xl bg-[#FCC409] text-black  px-2 md:px-6 rounded-xl inline-block">
+            A Degree Designed for Innovation, Impact & Success.
+          </p>
+
+          {/* Optional animated text (agar use karna ho) */}
+          {/* 
+          <p className="mt-6 text-xl font-semibold text-[#FCC409]">
+            {currentText}
+          </p>
+          */}
+        </div>
+
+        {/* RIGHT FORM */}
+        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+          <div className="w-full max-w-md bg-black/40 p-6 rounded-xl shadow-lg">
+            <NPFWidget />
+          </div>
+        </div>
+      </div>
+
+      {/* Selection color */}
       <style>
         {`
           ::selection {
@@ -50,32 +82,6 @@ function CompHero() {
           }
         `}
       </style>
-
-      {/* Left side content */}
-      <div className="flex flex-col items-center md:items-start z-20 w-full md:w-1/2 text-center md:text-left">
-        <h1 className="text-[40px] sm:text-[50px] md:text-[60px] text-[#ffffff] font-semibold leading-tight mb-6">
-          Build Your Business Acumen with Our
-          <span className="text-[#FCC409] font-bold mech-hero-wrapper">
-            {" "}
-            BBA
-          </span>
-        </h1>
-        <p className="mt-4 text-lg sm:text-xl md:text-2xl">
-          A Degree Designed for Innovation, Impact & Success.{" "}
-        </p>
-      </div>
-
-      {/* Right side content (NPF Widget) */}
-      <div className="flex justify-center md:justify-end w-full md:w-1/2 z-30 mt-8 md:mt-0">
-        <div
-          className="p-6 max-w-md w-full shadow-md"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.4)",
-          }}
-        >
-          <NPFWidget />
-        </div>
-      </div>
     </div>
   );
 }
