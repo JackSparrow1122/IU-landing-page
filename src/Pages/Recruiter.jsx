@@ -1,48 +1,65 @@
 import React, { useEffect, useState } from "react";
 
-import logo1 from "../assets/Images/bba-logo/Wireframe - 1.avif";
-import logo2 from "../assets/Images/bba-logo/Wireframe - 2.avif";
-import logo3 from "../assets/Images/bba-logo/Wireframe - 3.avif";
-import logo4 from "../assets/Images/bba-logo/Wireframe - 4.avif";
-import logo5 from "../assets/Images/bba-logo/Wireframe - 5.avif";
-import logo6 from "../assets/Images/bba-logo/Wireframe - 6.avif";
-import logo7 from "../assets/Images/bba-logo/Wireframe - 7.avif";
-import logo8 from "../assets/Images/bba-logo/Wireframe - 8.avif";
-import logo9 from "../assets/Images/bba-logo/Wireframe - 9.avif";
-import logo10 from "../assets/Images/bba-logo/Wireframe - 10.avif";
-import logo11 from "../assets/Images/bba-logo/Wireframe - 11.avif";
-import logo12 from "../assets/Images/bba-logo/Wireframe - 12.avif";
-import logo13 from "../assets/Images/bba-logo/Wireframe - 13.avif";
-import logo14 from "../assets/Images/bba-logo/Wireframe - 14.avif";
-import logo15 from "../assets/Images/bba-logo/Wireframe - 15.avif";
-import logo16 from "../assets/Images/bba-logo/Wireframe - 16.avif";
-import logo17 from "../assets/Images/bba-logo/Wireframe - 17.avif";
-import logo18 from "../assets/Images/bba-logo/Wireframe - 18.avif";
-import logo19 from "../assets/Images/bba-logo/Wireframe - 19.avif";
-import logo20 from "../assets/Images/bba-logo/Wireframe - 20.avif";
-import logo21 from "../assets/Images/bba-logo/Wireframe - 21.avif";
-import logo22 from "../assets/Images/bba-logo/Wireframe - 22.avif";
-import logo23 from "../assets/Images/bba-logo/Wireframe - 23.avif";
-import logo24 from "../assets/Images/bba-logo/Wireframe - 24.avif";
-import logo25 from "../assets/Images/bba-logo/Wireframe - 25.avif";
-import logo26 from "../assets/Images/bba-logo/Wireframe - 26.avif";
-import logo27 from "../assets/Images/bba-logo/Wireframe - 27.avif";
-import logo28 from "../assets/Images/bba-logo/Wireframe - 28.avif";
-import logo29 from "../assets/Images/bba-logo/Wireframe - 29.avif";
-import logo30 from "../assets/Images/bba-logo/Wireframe - 30.avif";
-import logo31 from "../assets/Images/bba-logo/Wireframe - 31.avif";
-import logo32 from "../assets/Images/bba-logo/Wireframe - 32.avif";
+import logo1 from "../assets/Images/bba-logo/1.JPG";
+import logo2 from "../assets/Images/bba-logo/2.JPG";
+import logo3 from "../assets/Images/bba-logo/3.JPG";
+import logo4 from "../assets/Images/bba-logo/4.JPG";
+import logo5 from "../assets/Images/bba-logo/5.JPG";
+import logo6 from "../assets/Images/bba-logo/6.JPG";
+import logo7 from "../assets/Images/bba-logo/7.JPG";
+import logo8 from "../assets/Images/bba-logo/8.JPG";
+import logo9 from "../assets/Images/bba-logo/9.JPG";
+import logo10 from "../assets/Images/bba-Logo/10.jpg"
+import logo11 from "../assets/Images/bba-logo/11.JPG"
+import logo12 from "../assets/Images/bba-logo/12.JPG"
+import logo13 from "../assets/Images/bba-logo/13.JPG"
+import logo14 from "../assets/Images/bba-logo/14.JPG"
+import logo15 from "../assets/Images/bba-logo/15.JPG"
+import logo16 from "../assets/Images/bba-logo/16.JPG"
+import logo17 from "../assets/Images/bba-logo/17.JPG"
+import logo18 from "../assets/Images/bba-logo/18.JPG"
+import logo19 from "../assets/Images/bba-logo/19.JPG"
+import logo20 from "../assets/Images/bba-logo/20.JPG"
+import logo21 from "../assets/Images/bba-logo/21.JPG"
+import logo22 from "../assets/Images/bba-logo/22.JPG"
+import logo23 from "../assets/Images/bba-logo/23.JPG"
+import logo24 from "../assets/Images/bba-logo/24.JPG"
+import logo25 from "../assets/Images/bba-logo/24.JPG"
+import logo26 from "../assets/Images/bba-logo/26.JPG"
+import logo27 from "../assets/Images/bba-logo/27.JPG"
+
 
 const CompRecruiter = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   const logos = [
-    logo1, logo2, logo3, logo4, logo5, logo6,
-    logo7, logo8, logo9, logo11, logo12,
-    logo13, logo14, logo15, logo16, logo17,
-    logo19, logo20, logo21, logo23, logo24,
-    logo25, logo26, logo27, logo28, logo29,
-    logo31, logo32, logo10, logo22, logo18, logo30,
+    logo1,
+    logo2,
+    logo3,
+    logo4,
+    logo5,
+    logo6,
+    logo7,
+    logo8,
+    logo9,
+    logo11,
+    logo12,
+    logo13,
+    logo10,
+    logo18,
+    logo22,
+    logo14,
+    logo15,
+    logo16,
+    logo17,
+    logo19,
+    logo20,
+    logo21,
+    logo23,
+    logo24,
+    logo25,
+    logo26,
+    logo27,
   ];
 
   useEffect(() => {
@@ -60,7 +77,10 @@ const CompRecruiter = () => {
       {/* Heading */}
       <div className="text-center mb-6">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#003C84]">
-          Top <span className="bg-[#FCC409] text-black rounded-3xl px-5">Recruiters</span>
+          Top{" "}
+          <span className="bg-[#FCC409] text-black rounded-3xl px-5">
+            Recruiters
+          </span>
         </h2>
       </div>
 

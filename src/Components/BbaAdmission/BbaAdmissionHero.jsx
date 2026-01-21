@@ -57,12 +57,7 @@ function CompHero() {
             A Degree Designed for Innovation, Impact & Success.
           </p>
 
-          {/* Optional animated text (agar use karna ho) */}
-          {/* 
-          <p className="mt-6 text-xl font-semibold text-[#FCC409]">
-            {currentText}
-          </p>
-          */}
+        
         </div>
 
         {/* RIGHT FORM */}
@@ -73,15 +68,7 @@ function CompHero() {
         </div>
       </div>
 
-      {/* Selection color */}
-      <style>
-        {`
-          ::selection {
-            background-color: #F37021;
-            color: #ffffff;
-          }
-        `}
-      </style>
+
     </div>
   );
 }
