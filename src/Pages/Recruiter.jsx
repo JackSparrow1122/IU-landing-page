@@ -73,7 +73,7 @@ const CompRecruiter = () => {
   }, []);
 
   return (
-    <div className="logo-slider-section py-6 roboto-regular bg-white">
+    <div className="logo-slider-section py-6 roboto-regular overflow-hidden bg-white">
       {/* Heading */}
       <div className="text-center mb-6">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#003C84]">
