@@ -41,15 +41,13 @@ function Navbar() {
           </div>
 
           {/* CENTER TEXT */}
-          <div
+          {/* <div
             className="flex-grow text-center text-white text-md md:text-3xl font-bold"
             style={pulseTextAnimation}
           >
            indira university school of business <br />
-            {/* <span className="text-sm md:text-base">
-              (formerly known as Indira Group of Institutes)
-            </span> */}
-          </div>
+            
+          </div> */}
 
           {/* RIGHT LOGO */}
           {/* <div className="mt-2">
