@@ -85,7 +85,7 @@ const CompRecruiter = () => {
       </div>
 
       {/* Slider */}
-      <div className="logo-slider relative overflow-hidden w-full">
+      <div className="logo-slider relative  w-full">
         <div className={`logo-slider-track flex ${isVisible ? "animate" : ""}`}>
           {/* Logos */}
           {logos.map((logo, index) => (

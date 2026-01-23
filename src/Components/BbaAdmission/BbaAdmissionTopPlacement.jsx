@@ -140,7 +140,7 @@ const TopPlacements = () => {
                   w-[70vw]
                   sm:w-[45vw]
                   md:w-[28vw]
-                  lg:w-[20vw]
+                  lg:w-[15vw]
                 "
               >
                 <div className="group overflow-hidden">
@@ -152,7 +152,7 @@ const TopPlacements = () => {
                       className="
                         w-full h-full object-cover
                         transition-transform duration-500
-                        group-hover:scale-110 object-top
+                        group-hover:scale-110 object-top 
                       "
                     />
 

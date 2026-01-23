@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Images
 import marketingImage from "../../assets/one.jpg";
@@ -36,63 +36,79 @@ const courses = [
   {
     name: "Marketing Management",
     duration: "3 Years",
-    fees: "₹1,25,000/year",
+    fees: "₹1,50,000/year",
     image: marketingImage,
   },
   {
     name: "Financial Management",
     duration: "3 Years",
-    fees: "₹1,25,000/year",
+    fees: "₹1,50,000/year",
     image: financialImage,
   },
   {
     name: "Human Resource Management",
     duration: "3 Years",
-    fees: "₹1,25,000/year",
+    fees: "₹1,50,000/year",
     image: hrImage,
   },
   {
     name: "Logistics and Supply Chain Management",
     duration: "3 Years",
-    fees: "₹1,25,000/year",
+    fees: "₹1,50,000/year",
     image: logisticsImage,
   },
   {
     name: "International Business",
     duration: "3 Years",
-    fees: "₹1,25,000/year",
+    fees: "₹1,50,000/year",
     image: internationalBusinessImage,
   },
   {
     name: "Banking and Financial Services",
     duration: "3 Years",
-    fees: "₹1,25,000/year",
+    fees: "₹1,50,000/year",
     image: bankingImage,
   },
   {
     name: "Digital Marketing",
     duration: "3 Years",
-    fees: "₹1,25,000/year",
+    fees: "₹1,50,000/year",
     image: digitalMarketingImage,
   },
   {
     name: "Innovation and Entrepreneurship",
     duration: "3 Years",
-    fees: "₹1,25,000/year",
+    fees: "₹1,50,000/year",
     image: innovationImage,
   },
 ];
+
+// Motion variants (kept soft & academic)
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const fadeSide = {
+  hidden: { opacity: 0, x: 20 },
+  visible: { opacity: 1, x: 0 },
+};
 
 function BbaAdmissionCourses() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="px-8 md:px-16 py-12 bg-white poppins-regular">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="px-8 md:px-16 py-12 bg-white poppins-regular"
+    >
       {/* Heading */}
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        variants={fadeUp}
         transition={{ duration: 0.6 }}
         className="text-4xl font-bold mb-12 text-black"
       >
@@ -101,18 +117,24 @@ function BbaAdmissionCourses() {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
         {/* LEFT SIDE LIST */}
-        <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-2">
+        <motion.div
+          variants={fadeUp}
+          transition={{ staggerChildren: 0.08 }}
+          className="md:col-span-5 lg:col-span-4 flex flex-col gap-2"
+        >
           {courses.map((course, index) => {
             const isSelected = selectedIndex === index;
 
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={fadeUp}
+                whileHover={{ scale: 1.015 }}
                 onClick={() => setSelectedIndex(index)}
                 className="cursor-pointer"
               >
                 <div
-                  className={`flex items-center justify-between px-6 py-5 rounded-full ${
+                  className={`flex items-center justify-between px-6 py-5 rounded-full transition-colors duration-300 ${
                     isSelected
                       ? "bg-[#fcc409] text-black"
                       : "text-gray-600 hover:text-black"
@@ -123,45 +145,67 @@ function BbaAdmissionCourses() {
                 </div>
 
                 {!isSelected && <hr className="border-gray-200 mx-6" />}
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* RIGHT SIDE CONTENT */}
         <div className="md:col-span-7 lg:col-span-8 relative">
           <div className="hidden md:block absolute -left-8 top-0 h-full w-px bg-gray-200" />
 
-          <p className="text-gray-700 leading-8 mb-10 text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedIndex}
+              initial="hidden"
+              animate="visible"
+              exit={{ opacity: 0 }}
+              variants={fadeSide}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <p className="text-gray-700 leading-8 mb-10 text-lg">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
 
-          <h3 className="text-xl font-semibold text-[#b1124a] mb-6">
-            Students can choose to specialize in-
-          </h3>
+              <h3 className="text-xl font-semibold text-[#b1124a] mb-6">
+                Students can choose to specialize in-
+              </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-12">
-            {courses.map((course, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <span className="text-[#b1124a]">✔</span>
-                <span>{course.name}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-12">
+                {courses.map((course, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="flex items-center gap-3"
+                  >
+                    <span className="text-[#b1124a]">✔</span>
+                    <span>{course.name}</span>
+                  </motion.div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          <h3 className="text-xl font-semibold text-[#b1124a] mb-6">
-            Career outcomes
-          </h3>
+              <h3 className="text-xl font-semibold text-[#b1124a] mb-6">
+                Career outcomes
+              </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
-            {[1, 2, 3, 4, 5, 6].map((_, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <span className="text-[#b1124a]">✔</span>
-                <span>Lorem ipsum dolor</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+                {[1, 2, 3, 4, 5, 6].map((_, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-3"
+                  >
+                    <span className="text-[#b1124a]">✔</span>
+                    <span>Lorem ipsum dolor</span>
+                  </motion.div>
+                ))}
               </div>
-            ))}
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
@@ -181,7 +225,7 @@ function BbaAdmissionCourses() {
         draggable
         pauseOnHover
       />
-    </div>
+    </motion.div>
   );
 }
 

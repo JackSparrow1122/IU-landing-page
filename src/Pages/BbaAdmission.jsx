@@ -10,6 +10,7 @@ import BbaAdmissionTestimonials from "../Components/BbaAdmission/BbaAdmissionTes
 import Recruiter from "../Pages/Recruiter";
 import BbaAdmissionTopPlacement from "../Components/BbaAdmission/BbaAdmissionTopPlacement";
 import BbaDomainCertifications from "../Components/BbaAdmission/BbaDomainCertifications";
+import BbaAdmissionFAQ from "../Components/BbaAdmission/BbaAdmissionFAQ";
 
 function BbaAdmission() {
   return (
@@ -25,6 +26,7 @@ function BbaAdmission() {
       <BbaAdmissionOfferings />
       <BbaAdmissionJoin />
       <BbaAdmissionTestimonials />
+      <BbaAdmissionFAQ />
       {/* <BbaAdmissionFaculty /> */}
     </div>
   );
