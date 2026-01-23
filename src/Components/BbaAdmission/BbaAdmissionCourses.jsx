@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
 
 // Images
 import marketingImage from "../../assets/one.jpg";
@@ -19,8 +20,6 @@ import Modal from "@mui/material/Modal";
 // Widget
 import NPFWidget from "../../Components/NPFWidget";
 
-const PRIMARY_COLOR = "#135783";
-
 const modalStyle = {
   position: "absolute",
   top: "50%",
@@ -33,77 +32,137 @@ const modalStyle = {
   borderRadius: "12px",
 };
 
-function BbaAdmissionCourses() {
-  const courses = [
-    { name: "Marketing Management", duration: "3 Years", fees: "₹1,25,000/year", image: marketingImage },
-    { name: "Financial Management", duration: "3 Years", fees: "₹1,25,000/year", image: financialImage },
-    { name: "Human Resource Management", duration: "3 Years", fees: "₹1,25,000/year", image: hrImage },
-    { name: "Logistics and Supply Chain Management", duration: "3 Years", fees: "₹1,25,000/year", image: logisticsImage },
-    { name: "International Business", duration: "3 Years", fees: "₹1,25,000/year", image: internationalBusinessImage },
-    { name: "Banking and Financial Services", duration: "3 Years", fees: "₹1,25,000/year", image: bankingImage },
-    { name: "Digital Marketing", duration: "3 Years", fees: "₹1,25,000/year", image: digitalMarketingImage },
-    { name: "Innovation and Entrepreneurship", duration: "3 Years", fees: "₹1,25,000/year", image: innovationImage },
-  ];
+const courses = [
+  {
+    name: "Marketing Management",
+    duration: "3 Years",
+    fees: "₹1,25,000/year",
+    image: marketingImage,
+  },
+  {
+    name: "Financial Management",
+    duration: "3 Years",
+    fees: "₹1,25,000/year",
+    image: financialImage,
+  },
+  {
+    name: "Human Resource Management",
+    duration: "3 Years",
+    fees: "₹1,25,000/year",
+    image: hrImage,
+  },
+  {
+    name: "Logistics and Supply Chain Management",
+    duration: "3 Years",
+    fees: "₹1,25,000/year",
+    image: logisticsImage,
+  },
+  {
+    name: "International Business",
+    duration: "3 Years",
+    fees: "₹1,25,000/year",
+    image: internationalBusinessImage,
+  },
+  {
+    name: "Banking and Financial Services",
+    duration: "3 Years",
+    fees: "₹1,25,000/year",
+    image: bankingImage,
+  },
+  {
+    name: "Digital Marketing",
+    duration: "3 Years",
+    fees: "₹1,25,000/year",
+    image: digitalMarketingImage,
+  },
+  {
+    name: "Innovation and Entrepreneurship",
+    duration: "3 Years",
+    fees: "₹1,25,000/year",
+    image: innovationImage,
+  },
+];
 
-  const [open, setOpen] = React.useState(false);
+function BbaAdmissionCourses() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className="px-8 md:px-16 py-6 bg-[#f3f4f6] poppins-regular">
-      
+    <div className="px-8 md:px-16 py-12 bg-white poppins-regular">
       {/* Heading */}
-      <h2
-        className="text-3xl md:text-4xl font-bold text-center mb-8"
-        style={{ color: PRIMARY_COLOR }}
-        data-aos="fade-up"
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-4xl font-bold mb-12 text-black"
       >
-        BBA Courses
-      </h2>
+        Specializations
+      </motion.h2>
 
-      {/* Courses Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {courses.map((course, index) => (
-          <div
-            key={index}
-            data-aos="fade-up"
-            className="rounded-xl flex flex-col justify-between overflow-hidden transition-all transform hover:scale-105"
-            style={{
-              background: `linear-gradient(180deg, ${PRIMARY_COLOR}, #1f6f91, #2a9da2)`,
-              minHeight: "360px",
-              boxShadow:
-                "0px 4px 20px rgba(19, 87, 131, 0.35), 0px 8px 30px rgba(19, 87, 131, 0.25)",
-            }}
-          >
-            {/* Image */}
-            <img
-              src={course.image}
-              alt={course.name}
-              className="w-full h-40 object-cover object-top"
-            />
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+        {/* LEFT SIDE LIST */}
+        <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-2">
+          {courses.map((course, index) => {
+            const isSelected = selectedIndex === index;
 
-            {/* Content */}
-            <div className="px-6 py-4 flex flex-col h-full">
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {course.name}
-              </h3>
-
-              <p className="text-sm text-gray-100">
-                Duration: {course.duration}
-              </p>
-
-              <p className="text-sm text-gray-100 mt-1">
-                Fees: {course.fees}
-              </p>
-
-              {/* Apply Button */}
-              <button
-                onClick={() => setOpen(true)}
-                className="mt-auto bg-white text-[#135783] px-4 py-2 rounded-full font-semibold transition-all hover:bg-gray-100 hover:shadow-lg"
+            return (
+              <div
+                key={index}
+                onClick={() => setSelectedIndex(index)}
+                className="cursor-pointer"
               >
-                Apply Now
-              </button>
-            </div>
+                <div
+                  className={`flex items-center justify-between px-6 py-5 rounded-full ${
+                    isSelected
+                      ? "bg-[#fcc409] text-black"
+                      : "text-gray-600 hover:text-black"
+                  }`}
+                >
+                  <span className="text-lg font-medium">{course.name}</span>
+                  {isSelected && <span className="text-2xl">→</span>}
+                </div>
+
+                {!isSelected && <hr className="border-gray-200 mx-6" />}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* RIGHT SIDE CONTENT */}
+        <div className="md:col-span-7 lg:col-span-8 relative">
+          <div className="hidden md:block absolute -left-8 top-0 h-full w-px bg-gray-200" />
+
+          <p className="text-gray-700 leading-8 mb-10 text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+
+          <h3 className="text-xl font-semibold text-[#b1124a] mb-6">
+            Students can choose to specialize in-
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-12">
+            {courses.map((course, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <span className="text-[#b1124a]">✔</span>
+                <span>{course.name}</span>
+              </div>
+            ))}
           </div>
-        ))}
+
+          <h3 className="text-xl font-semibold text-[#b1124a] mb-6">
+            Career outcomes
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+            {[1, 2, 3, 4, 5, 6].map((_, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <span className="text-[#b1124a]">✔</span>
+                <span>Lorem ipsum dolor</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Modal */}

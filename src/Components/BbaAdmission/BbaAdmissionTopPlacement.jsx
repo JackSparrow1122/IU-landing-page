@@ -1,41 +1,80 @@
 import React, { useEffect, useRef, useState } from "react";
 import shitaImage from "../../assets/sample.webp";
+import img1 from "../../assets/New_Students/1.png";
+import img2 from "../../assets/New_Students/2.png";
+import img3 from "../../assets/New_Students/3.png";
+import img4 from "../../assets/New_Students/4.png";
+import img5 from "../../assets/New_Students/5.png";
+import img6 from "../../assets/New_Students/6.png";
+import img7 from "../../assets/New_Students/7.png";
+import img8 from "../../assets/New_Students/8.png";
+import img9 from "../../assets/New_Students/9.png";
+import img10 from "../../assets/New_Students/10.png";
 
 const students = [
   {
-    name: "SHITA KHATRI",
-    company: "Trident Group",
+    name: "Mr. Aman Sawarkar",
+    company: "Accenture", // placeholder
     feedback:
-      "Indira helped me build confidence and industry-ready skills that shaped my career.",
-    image: shitaImage,
+      "Proud placement achieved through focused training and mentorship.",
+    image: img1,
   },
   {
-    name: "MANIK SALARIA",
-    company: "MNC",
+    name: "Mr. Akash Malpure",
+    company: "Airtel",
     feedback:
-      "The exposure and mentorship at Indira played a crucial role in my placement.",
-    image: shitaImage,
+      "Industry exposure at Indira helped me gain real-world confidence.",
+    image: img2,
   },
   {
-    name: "AMANDEEP KAUR",
-    company: "Federal Bank",
-    feedback:
-      "Practical learning and guidance helped me transition smoothly into corporate life.",
-    image: shitaImage,
+    name: "Ms. Manila Singh",
+    company: "Airtel",
+    feedback: "Supportive faculty and practical learning shaped my journey.",
+    image: img3,
   },
   {
-    name: "RAHUL SHARMA",
-    company: "Google",
-    feedback:
-      "Indira shaped my analytical thinking and leadership abilities.",
-    image: shitaImage,
+    name: "Mr. Aniket Pawar",
+    company: "KPMG",
+    feedback: "The placement process was smooth and professionally guided.",
+    image: img4,
   },
   {
-    name: "PRIYA PATEL",
-    company: "Microsoft",
+    name: "Ms. Rucha Baste",
+    company: "KPMG",
     feedback:
-      "The curriculum and faculty support helped me reach my goals.",
-    image: shitaImage,
+      "Skill-based learning helped me transition into the corporate world.",
+    image: img5,
+  },
+  {
+    name: "Ms. Harshada Navale",
+    company: "Amazon",
+    feedback: "Indira provided the right platform to grow and succeed.",
+    image: img6,
+  },
+  {
+    name: "Ms. Aishwarya Verma",
+    company: "KPMG",
+    feedback: "Hands-on projects made learning meaningful and effective.",
+    image: img7,
+  },
+  {
+    name: "Mr. Amitesh Rao",
+    company: "Cloudaeon",
+    feedback:
+      "Career-focused training prepared me for professional challenges.",
+    image: img8,
+  },
+  {
+    name: "Ms. Samiksha Pimpalshende",
+    company: "Ocman Realty",
+    feedback: "Excellent mentorship and placement support throughout.",
+    image: img9,
+  },
+  {
+    name: "Ms. Shruti Gramkar",
+    company: "Quickinsure",
+    feedback: "A strong foundation that helped me start my career confidently.",
+    image: img10,
   },
 ];
 
@@ -71,7 +110,6 @@ const TopPlacements = () => {
   return (
     <div className="px-4 md:px-16 py-6 bg-[#FCC409] overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
-
         {/* LEFT CONTENT */}
         <div className="md:col-span-2">
           <span className="inline-block mb-4 px-4 py-1 text-2xl md:text-4xl font-semibold rounded-full bg-[#003C84] text-white">
@@ -106,7 +144,6 @@ const TopPlacements = () => {
                 "
               >
                 <div className="group overflow-hidden">
-
                   {/* IMAGE */}
                   <div className="relative overflow-hidden h-64 sm:h-72 md:h-80 bg-white">
                     <img
@@ -115,15 +152,13 @@ const TopPlacements = () => {
                       className="
                         w-full h-full object-cover
                         transition-transform duration-500
-                        group-hover:scale-110
+                        group-hover:scale-110 object-top
                       "
                     />
 
                     {/* FEEDBACK OVERLAY */}
                     <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center px-4 text-center">
-                      <p className="text-white text-sm">
-                        {student.feedback}
-                      </p>
+                      <p className="text-white text-sm">{student.feedback}</p>
                     </div>
                   </div>
 
@@ -133,16 +168,14 @@ const TopPlacements = () => {
                       {student.name}
                     </h3>
                     <p className="text-xs md:text-sm text-black">
-                      {student.company}
+                      {student.company || "Placement Achieved"}
                     </p>
                   </div>
-
                 </div>
               </div>
             ))}
           </div>
         </div>
-
       </div>
     </div>
   );

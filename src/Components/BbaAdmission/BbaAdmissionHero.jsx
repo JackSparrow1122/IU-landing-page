@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import backgroundImage from "../../assets/hero.jpg";
+import backgroundImage2 from "../../assets/IUBanner.jpg";
 import NPFWidget from "../NPFWidget";
 
 function CompHero() {
@@ -36,10 +37,10 @@ function CompHero() {
   return (
     <div
       className="relative min-h-screen bg-cover bg-center bg-no-repeat text-white"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${backgroundImage2})` }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40 z-10"></div>
+      {/* <div className="absolute inset-0 bg-black/40 z-10"></div> */}
 
       {/* Content */}
       <div className="relative z-20 flex min-h-screen flex-col md:flex-row items-center justify-center px-4 sm:px-8 md:px-16 gap-10">
@@ -56,8 +57,6 @@ function CompHero() {
           <p className="mt-6 text-base sm:text-lg md:text-xl bg-[#FCC409] text-black  px-2 md:px-6 rounded-xl inline-block">
             A Degree Designed for Innovation, Impact & Success.
           </p>
-
-        
         </div>
 
         {/* RIGHT FORM */}
@@ -67,8 +66,6 @@ function CompHero() {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 }
