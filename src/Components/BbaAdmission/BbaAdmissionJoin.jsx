@@ -22,17 +22,19 @@ function MarketingManagementJoin() {
       />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#003C84] via-[#018697] to-[#018697] opacity-70 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#990000] via-[#011E5A] to-[#051D58] opacity-70 z-10" />
 
       {/* Text content */}
       <div className="relative z-20 px-8 md:px-16 py-10">
         <div className="text-center">
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-    Your business career starts with a conversation. 
+            Your business career starts with a conversation.
           </h1>
 
           <p className="text-xl text-gray-200 mb-6">
-Your detailed guide to specializations, infrastructure, placements, and admission process.           </p>
+            Your detailed guide to specializations, infrastructure, placements,
+            and admission process.{" "}
+          </p>
 
           {/* Download Brochure Button */}
           <button

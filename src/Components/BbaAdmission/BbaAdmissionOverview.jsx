@@ -19,18 +19,15 @@ function BbaAdmissionOverview() {
       {/* Left Part: Program Overview */}
       <div className="flex-1" data-aos="fade-right">
         <h2 className="text-3xl md:text-4xl font-bold text-[#135883] mb-4">
-          Shape Your Future with Our Premier BBA Programme
+          Top BBA University in Maharashtra
         </h2>
 
         <p className="text-sm md:text-lg text-gray-600 tracking-wide">
-          Our BBA programme is designed to transform aspiring students into
-          industry-ready business professionals. As your top choice, we
-          offer a robust curriculum that blends core management principles with
-          modern specializations in Marketing, Finance, HR, Digital Marketing,
-          Logistics, and more. Through case studies, live projects, and
-          internships, students gain both knowledge and practical expertise.
-          Admissions for 2026 are now open, begin your journey in business
-          leadership today.
+          Indira University – SOB Pune stands among the top BBA colleges in
+          India, offering a world-class Bachelor of Business Administration
+          programme designed for aspiring business leaders, entrepreneurs, and
+          management professionals. Our BBA course after 12th provides the
+          perfect foundation for MBA aspirants and corporate careers.
         </p>
       </div>
 
