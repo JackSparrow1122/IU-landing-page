@@ -42,13 +42,13 @@ function BbaAdmissionOfferings() {
   return (
     <div className="px-8 md:px-16 py-4 md:py-8 bg-[#f3f4f6] poppins-regular">
       <h2
-        className="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-8 text-[#011E5A]"
+        className="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-8 text-[#135883]"
         data-aos="fade-up"
       >
         Why Choose Us?
       </h2>
       <h2
-        className="text-xl md:text-2xl font-bold text-center mb-4 md:mb-8 text-[#011E5A]"
+        className="text-xl md:text-2xl font-bold text-center mb-4 md:mb-8 text-[#135883]"
         data-aos="fade-up"
       >
         At the School of Business, we provide an unmatched management education

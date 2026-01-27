@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import shitaImage from "../../assets/sample.webp";
 import img1 from "../../assets/New_Students/1.png";
 import img2 from "../../assets/New_Students/2.png";
 import img3 from "../../assets/New_Students/3.png";

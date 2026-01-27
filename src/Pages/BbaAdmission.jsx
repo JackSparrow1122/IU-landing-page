@@ -2,7 +2,6 @@ import React from "react";
 import BbaAdmissionHero from "../Components/BbaAdmission/BbaAdmissionHero";
 import BbaAdmissionPointers from "../Components/BbaAdmission/BbaAdmissionPointers";
 import BbaAdmissionOverview from "../Components/BbaAdmission/BbaAdmissionOverview";
-import BbaAdmissionOfferings from "../Components/BbaAdmission/BbaAdmissionOfferings";
 import BbaAdmissionCourses from "../Components/BbaAdmission/BbaAdmissionCourses";
 import BbaAdmissionJoin from "../Components/BbaAdmission/BbaAdmissionJoin";
 import BbaAdmissionInfra from "../Components/BbaAdmission/BbaAdmissionInfra";
@@ -20,12 +19,11 @@ function BbaAdmission() {
       <BbaAdmissionPointers />
       <BbaAdmissionOverview />
       <BbaAdmissionTopPlacement />
-      <Recruiter />
-      <BbaDomainCertifications />
+      <Recruiter/>
       <BbaAdmissionCourses />
+      <BbaDomainCertifications />
       <BBAAdmissionProcess />
       <BbaAdmissionInfra />
-      <BbaAdmissionOfferings />
       <BbaAdmissionJoin />
       <BbaAdmissionTestimonials />
       <BbaAdmissionFAQ />

@@ -102,7 +102,7 @@ const BBAAdmissionProcess = () => {
       <div className="max-w-full mx-auto">
 
         {/* --- HEADER --- */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,8 +112,7 @@ const BBAAdmissionProcess = () => {
               BBA Admission <span className="text-[#990000]">2026 Open</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-medium">
-              Apply for the Best BBA College in Pune
-            </p>
+How to Apply for BBA at Indira University?              </p>
           </motion.div>
         </div>
 
@@ -121,7 +120,6 @@ const BBAAdmissionProcess = () => {
         <div className="mb-24">
           <div className="flex items-center gap-3 mb-10">
         
-            <h2 className="text-2xl md:text-3xl font-bold text-[#051D58]">How to Apply ? </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-y-12 md:gap-x-4 relative">
@@ -176,58 +174,6 @@ const BBAAdmissionProcess = () => {
             })}
           </div>
         </div>
-
-        {/* --- INFO GRIDS: Eligibility & Exams --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          
-          {/* LEFT: Eligibility */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-[#F8F9FA] p-8 rounded-xl border-l-4 border-[#990000] shadow-sm"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <FaGraduationCap className="text-3xl text-[#990000]" />
-              <h3 className="text-2xl font-bold text-[#011E5A]">Eligibility Criteria</h3>
-            </div>
-            <ul className="space-y-4">
-              {eligibilityCriteria.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="mt-1 text-[#F4C430] text-lg">●</span>
-                  <span className="text-gray-700 font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* RIGHT: Entrance Exams */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-[#011E5A] p-8 rounded-xl text-white shadow-lg relative overflow-hidden"
-          >
-            {/* Background Decoration */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#F4C430] rounded-full blur-[60px] opacity-20"></div>
-
-            <div className="flex items-center gap-3 mb-6 relative z-10">
-              <FaUniversity className="text-3xl text-[#F4C430]" />
-              <h3 className="text-2xl font-bold text-white">Entrance Exams Accepted</h3>
-            </div>
-            
-            <div className="grid grid-cols-1 gap-3 relative z-10">
-              {entranceExams.map((exam, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 bg-white/10 rounded-lg border border-white/10">
-                  <FaCheckCircle className="text-[#F4C430] flex-shrink-0" />
-                  <span className="text-sm md:text-base font-medium">{exam}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-        </div>
-
       </div>
     </section>
   );

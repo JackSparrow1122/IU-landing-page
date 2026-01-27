@@ -61,6 +61,12 @@ const CompRecruiter = () => {
     logo27,
   ];
 
+  // Split logos into 3 rows
+  const logosPerRow = Math.ceil(logos.length / 3);
+  const row1 = logos.slice(0, logosPerRow);
+  const row2 = logos.slice(logosPerRow, logosPerRow * 2);
+  const row3 = logos.slice(logosPerRow * 2);
+
   useEffect(() => {
     const handleVisibilityChange = () => {
       setIsVisible(!document.hidden);
@@ -71,26 +77,22 @@ const CompRecruiter = () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
-  return (
-    <div className="logo-slider-section py-6 roboto-regular overflow-hidden bg-white">
-      {/* Heading */}
-      <div className="text-center mb-6">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#011E5A]">
-          Top{" "}
-          <span className="bg-[#FCC409] text-[#990200] rounded-3xl px-5">
-            Recruiters
-          </span>
-        </h2>
-      </div>
-
-      {/* Slider */}
-      <div className="logo-slider relative  w-full">
-        <div className={`logo-slider-track flex ${isVisible ? "animate" : ""}`}>
-          {/* Logos */}
-          {logos.map((logo, index) => (
+  // Render a single row of logos
+  const renderLogoRow = (logosArray, rowIndex, animationDirection = "left") => {
+    const isReverse = animationDirection === "right";
+    
+    return (
+      <div className="logo-row relative w-full mb-6 md:mb-8">
+        <div 
+          className={`logo-row-track flex ${isVisible ? "animate" : ""} ${
+            isReverse ? "reverse-animation" : ""
+          }`}
+        >
+          {/* Original logos */}
+          {logosArray.map((logo, index) => (
             <div
-              key={index}
-              className="logo-slide flex-none mx-3 md:mx-5
+              key={`row-${rowIndex}-${index}`}
+              className="logo-slide flex-none mx-2 md:mx-3 lg:mx-4
                          bg-white rounded-xl
                          border border-[#2899A4]/40
                          shadow-[0_6px_20px_rgba(40,153,164,0.25)]
@@ -100,17 +102,17 @@ const CompRecruiter = () => {
             >
               <img
                 src={logo}
-                alt={`Recruiter Logo ${index + 1}`}
-                className="h-16 md:h-24 max-w-[160px] object-contain p-4"
+                alt={`Recruiter Logo ${rowIndex * logosPerRow + index + 1}`}
+                className="h-14 md:h-20 lg:h-24 max-w-[120px] md:max-w-[140px] lg:max-w-[160px] object-contain p-3 md:p-4"
               />
             </div>
           ))}
 
           {/* Duplicate for seamless loop */}
-          {logos.map((logo, index) => (
+          {logosArray.map((logo, index) => (
             <div
-              key={`duplicate-${index}`}
-              className="logo-slide flex-none mx-3 md:mx-5
+              key={`row-${rowIndex}-duplicate-${index}`}
+              className="logo-slide flex-none mx-2 md:mx-3 lg:mx-4
                          bg-white rounded-xl
                          border border-[#2899A4]/40
                          shadow-[0_6px_20px_rgba(40,153,164,0.25)]
@@ -120,37 +122,70 @@ const CompRecruiter = () => {
             >
               <img
                 src={logo}
-                alt={`Recruiter Logo ${index + 1}`}
-                className="h-16 md:h-24 max-w-[160px] object-contain p-4"
+                alt={`Recruiter Logo ${rowIndex * logosPerRow + index + 1}`}
+                className="h-14 md:h-20 lg:h-24 max-w-[120px] md:max-w-[140px] lg:max-w-[160px] object-contain p-3 md:p-4"
               />
             </div>
           ))}
         </div>
+      </div>
+    );
+  };
 
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10" />
+  return (
+    <div className="logo-slider-section py-8 md:py-12 roboto-regular overflow-hidden bg-white">
+      {/* Heading */}
+      <div className="text-center mb-8 md:mb-12">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#011E5A] mb-2">
+          Top{" "}
+          <span className="bg-[#FCC409] text-black rounded-3xl px-4 sm:px-5 py-1 inline-block">
+            Recruiters
+          </span>
+        </h2>
+        <p className="text-gray-600 text-sm sm:text-base md:text-lg">
+          Our students get placed in leading companies worldwide
+        </p>
+      </div>
+
+      {/* Three Row Slider */}
+      <div className="logo-slider-container relative w-full max-w-7xl mx-auto px-4">
+        {/* Row 1 - Left to Right */}
+        {renderLogoRow(row1, 1, "left")}
+        
+        {/* Row 2 - Right to Left */}
+        {renderLogoRow(row2, 2, "right")}
+        
+        {/* Row 3 - Left to Right */}
+        {renderLogoRow(row3, 3, "left")}
+
+        {/* Fade edges for each row */}
+        <div className="absolute left-0 top-0 h-full w-16 md:w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 h-full w-16 md:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
       </div>
 
       {/* CSS */}
       <style>{`
-        .logo-slider {
-          padding: 0 20px;
+        .logo-slider-container {
+          padding: 0 10px;
         }
 
-        .logo-slider-track {
+        .logo-row-track {
           width: fit-content;
         }
 
-        .logo-slider-track.animate {
-          animation: slide 40s linear infinite;
+        .logo-row-track.animate {
+          animation: slideLeft 50s linear infinite;
         }
 
-        .logo-slider:hover .logo-slider-track {
+        .logo-row-track.reverse-animation.animate {
+          animation: slideRight 45s linear infinite;
+        }
+
+        .logo-row:hover .logo-row-track {
           animation-play-state: paused;
         }
 
-        @keyframes slide {
+        @keyframes slideLeft {
           0% {
             transform: translateX(0);
           }
@@ -159,9 +194,57 @@ const CompRecruiter = () => {
           }
         }
 
-        @media (max-width: 640px) {
-          .logo-slider-track.animate {
+        @keyframes slideRight {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        /* Different animation speeds for visual interest */
+        .logo-row:nth-child(1) .logo-row-track.animate {
+          animation-duration: 50s;
+        }
+        
+        .logo-row:nth-child(2) .logo-row-track.animate {
+          animation-duration: 45s;
+        }
+        
+        .logo-row:nth-child(3) .logo-row-track.animate {
+          animation-duration: 55s;
+        }
+
+        @media (max-width: 768px) {
+          .logo-row:nth-child(1) .logo-row-track.animate {
+            animation-duration: 35s;
+          }
+          
+          .logo-row:nth-child(2) .logo-row-track.animate {
             animation-duration: 30s;
+          }
+          
+          .logo-row:nth-child(3) .logo-row-track.animate {
+            animation-duration: 40s;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .logo-row {
+            margin-bottom: 4px;
+          }
+          
+          .logo-row:nth-child(1) .logo-row-track.animate {
+            animation-duration: 25s;
+          }
+          
+          .logo-row:nth-child(2) .logo-row-track.animate {
+            animation-duration: 22s;
+          }
+          
+          .logo-row:nth-child(3) .logo-row-track.animate {
+            animation-duration: 28s;
           }
         }
       `}</style>
