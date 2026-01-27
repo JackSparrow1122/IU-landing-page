@@ -219,7 +219,7 @@ function BbaAdmissionCourses() {
                 className="cursor-pointer"
               >
                 <div
-                  className={`flex items-center justify-between px-6 py-5 rounded-full transition-colors duration-300 ${
+                  className={`flex items-center justify-between px-4 py-4 rounded-full transition-colors duration-300 ${
                     isSelected
                       ? "bg-[#fcc409] text-black"
                       : "text-gray-600 hover:text-black"
@@ -265,16 +265,39 @@ function BbaAdmissionCourses() {
                   </div>
                 </div>
 
-                <p className="text-gray-700 leading-8 mb-8 text-lg">
-                  {currentSpecialization.description}
-                </p>
+                {/* Image with description - New layout */}
+                <div className="flex flex-col lg:flex-row gap-8 mb-8">
+                  {/* Image container */}
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="lg:w-2/5"
+                  >
+                    <div className="relative overflow-hidden  shadow-lg">
+                      <img 
+                        src={currentSpecialization.image} 
+                        alt={currentSpecialization.name}
+                        className="w-full h-64 lg:h-72 object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </motion.div>
+                  
+                  {/* Description container */}
+                  <div className="lg:w-3/5">
+                    <p className="text-gray-700 leading-8 text-lg">
+                      {currentSpecialization.description}
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <h3 className="text-xl font-semibold text-[#b1124a] mb-6">
                 Top Career Opportunities
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 ">
                 {currentSpecialization.careerOutcomes.map((outcome, index) => (
                   <motion.div
                     key={index}
@@ -287,19 +310,6 @@ function BbaAdmissionCourses() {
                     <span className="font-medium">{outcome}</span>
                   </motion.div>
                 ))}
-              </div>
-
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <h3 className="text-xl font-semibold text-[#b1124a] mb-4">
-                  Our Top Recruiters
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Our graduates are placed in leading companies across various industries.
-                  (Logos would be displayed here)
-                </p>
-                <div className="text-sm text-gray-500 italic">
-                  Logos of top recruiters will be displayed in this section
-                </div>
               </div>
 
               {/* CTA Button */}

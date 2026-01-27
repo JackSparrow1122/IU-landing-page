@@ -108,19 +108,19 @@ const TopPlacements = () => {
   }, [isHovered]);
 
   return (
-    <div className="px-4 md:px-16 py-6 bg-[#FCC409] overflow-hidden">
+    <div className="px-4 md:px-16 py-6 bg-gradient-to-r from-[#7A0C1E] via-[#5C1233] to-[#2A0F3F] overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
         {/* LEFT CONTENT */}
         <div className="md:col-span-2">
-          <span className="inline-block mb-4 px-4 py-1 text-2xl md:text-4xl font-semibold rounded-full bg-[#003C84] text-white">
+          <span className="inline-block mb-4 px-4 py-1 text-2xl md:text-4xl font-semibold rounded-full bg-[#011E5A] text-white">
             TOP PLACEMENTS
           </span>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             From Campus <br /> to Corporate
           </h2>
 
-          <p className="text-black">
+          <p className="text-white">
             Our students secure top placements with strong industry exposure.
           </p>
         </div>
@@ -164,10 +164,10 @@ const TopPlacements = () => {
 
                   {/* NAME + COMPANY (FIXED BELOW IMAGE, LEFT) */}
                   <div className="pt-3 text-left">
-                    <h3 className="text-sm md:text-base font-semibold text-black">
+                    <h3 className="text-sm md:text-base font-semibold text-white">
                       {student.name}
                     </h3>
-                    <p className="text-sm md:text-lg text-white bg-[#003C84] pl-4">
+                    <p className="text-sm md:text-lg text-white bg-[#011E5A]">
                       {student.company || "Placement Achieved"}
                     </p>
                   </div>

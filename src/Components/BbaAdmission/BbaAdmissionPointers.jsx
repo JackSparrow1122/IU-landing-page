@@ -65,7 +65,7 @@ function MarketingManagementPointers() {
               {title}
             </h2>
 
-            <p className="text-[#135783] text-sm md:text-base text-center mt-1">
+            <p className="text-[#135783] text-lg md:text-base text-center mt-1">
               {value}
             </p>
           </div>

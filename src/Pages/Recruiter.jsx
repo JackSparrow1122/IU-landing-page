@@ -103,7 +103,7 @@ const CompRecruiter = () => {
               <img
                 src={logo}
                 alt={`Recruiter Logo ${rowIndex * logosPerRow + index + 1}`}
-                className="h-14 md:h-20 lg:h-24 max-w-[120px] md:max-w-[140px] lg:max-w-[160px] object-contain p-3 md:p-4"
+                className="h-14 md:h-20 lg:h-24 max-w-[120px] md:max-w-[140px] lg:max-w-[160px] object-contain p-2 md:p-2"
               />
             </div>
           ))}
@@ -123,7 +123,7 @@ const CompRecruiter = () => {
               <img
                 src={logo}
                 alt={`Recruiter Logo ${rowIndex * logosPerRow + index + 1}`}
-                className="h-14 md:h-20 lg:h-24 max-w-[120px] md:max-w-[140px] lg:max-w-[160px] object-contain p-3 md:p-4"
+                className="h-14 md:h-20 lg:h-24 max-w-[120px] md:max-w-[140px] lg:max-w-[160px] object-contain p-2 md:p-2"
               />
             </div>
           ))}
