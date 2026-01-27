@@ -1,27 +1,27 @@
 import { useEffect, useState, useRef } from "react";
-import img1 from "../../assets/five.jpg";
+import img1 from "../../assets/club.jpg";
+import img2 from "../../assets/Event.jpg";
+import img3 from "../../assets/Facilities.jpg";
+
 
 const data = [
   {
     id: 1,
     title: "Events",
-    subtitle: "Business Learning Beyond the Classroom",
     description:
       "Indira University Pune hosts year-round events including Management Fests, Corporate Conclaves, Start-up Summits, CEO talks, industry visits, placement drives, workshops, certifications, cultural fests, and sports tournaments that transform BBA students into industry-ready professionals.",
-    image: img1,
+    image: img2,
   },
   {
     id: 2,
     title: "Facilities",
-    subtitle: "Premier BBA College Infrastructure in Pune",
     description:
       "Our campus features smart classrooms, SAP & Tally labs, Bloomberg Terminal, Innovation Center, Digital Marketing Lab, AC hostels, sports complex, cafeteria, auditorium, medical center, and full placement support.",
-    image: img1,
+    image: img3,
   },
   {
     id: 3,
     title: "Student Clubs",
-    subtitle: "Leadership Through Professional Student Clubs",
     description:
       "Marketing, Finance, Entrepreneurship, HR, International Business, Digital Marketing, Public Speaking, CSR, Cultural and Sports Clubs provide leadership roles, networking, resume-building and placement advantages.",
     image: img1,
@@ -154,15 +154,15 @@ export default function CampusFacilities() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white min-h-[300vh]"
+      className="relative bg-gradient-to-r from-[#990000] via-[#011E5A] to-[#051D58] min-h-[300vh]"
       style={{ height: `${data.length * 100}vh` }}
     >
       {/* Fixed content that stays in view */}
       <div className="sticky top-0 h-screen flex items-center justify-center">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-8 items-center">
             {/* LEFT SIDE - Content */}
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-1/1">
               {data.map((item, index) => (
                 <div
                   key={item.id}
@@ -173,16 +173,12 @@ export default function CampusFacilities() {
                   }`}
                 >
                   <div className="max-w-2xl">
-                    <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-6">
-                      {index + 1}. {item.title}
-                    </span>
-                    <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight">
+                  
+                    <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#FCC409] leading-tight">
                       {item.title}
                     </h2>
-                    <h3 className="text-2xl md:text-3xl font-semibold text-blue-600 mb-8">
-                      {item.subtitle}
-                    </h3>
-                    <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                  
+                    <p className="text-white text-lg md:text-xl leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -191,8 +187,8 @@ export default function CampusFacilities() {
             </div>
 
             {/* RIGHT SIDE - Image */}
-            <div className="w-full lg:w-1/2">
-              <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
+            <div className="w-full lg:w-1/1">
+              <div className="relative aspect-video  overflow-hidden shadow-2xl">
                 {data.map((item, index) => (
                   <div
                     key={item.id}
@@ -213,25 +209,7 @@ export default function CampusFacilities() {
                 ))}
               </div>
 
-              {/* Progress navigation */}
-              <div className="flex flex-col items-center mt-12">
-                <div className="flex space-x-4 mb-4">
-                  {data.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleDotClick(index)}
-                      className={`h-3 rounded-full transition-all duration-300 ${
-                        index === activeIndex
-                          ? "w-10 bg-blue-600"
-                          : "w-6 bg-gray-300 hover:bg-gray-400"
-                      }`}
-                      aria-label={`Go to ${data[index].title}`}
-                    />
-                  ))}
-                </div>
-                
-       
-              </div>
+            
             </div>
           </div>
         </div>

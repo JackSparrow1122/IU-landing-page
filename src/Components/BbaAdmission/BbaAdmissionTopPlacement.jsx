@@ -112,15 +112,14 @@ const TopPlacements = () => {
       <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
         {/* LEFT CONTENT */}
         <div className="md:col-span-2">
-          <span className="inline-block mb-4 px-4 py-1 text-2xl md:text-4xl font-semibold rounded-full bg-[#011E5A] text-white">
-            TOP PLACEMENTS
-          </span>
+            
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            TOP PLACEMENTS <br />
             From Campus <br /> to Corporate
           </h2>
 
-          <p className="text-white">
+          <p className="text-white text-lg md:text-xl">
             Our students secure top placements with strong industry exposure.
           </p>
         </div>
@@ -163,7 +162,7 @@ const TopPlacements = () => {
                   </div>
 
                   {/* NAME + COMPANY (FIXED BELOW IMAGE, LEFT) */}
-                  <div className="pt-3 text-left">
+                  <div className="pt-3 text-center">
                     <h3 className="text-sm md:text-base font-semibold text-white">
                       {student.name}
                     </h3>

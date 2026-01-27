@@ -23,29 +23,14 @@ const COLORS = {
   yellow: "#F4C430", // Standard brand yellow
 };
 
-// 1. Eligibility Data
-const eligibilityCriteria = [
-  "Passed 10+2 (Class 12) from any recognized board (CBSE, ICSE, State Board)",
-  "All streams eligible: Commerce, Science, Arts",
-  "Minimum 45% aggregate (40% for reserved categories)",
-  "Age: 17-25 years as on admission date",
-];
 
-// 2. Entrance Exams Data
-const entranceExams = [
-  "CUET (Common University Entrance Test)",
-  "IPU CET",
-  "NPAT (NMIMS)",
-  "Indira University Entrance Test (IUET)",
-  "Merit-based admission for 90%+ scorers",
-];
 
 // 3. The 5-Step Process Data (Mapped to Brand Colors)
 const steps = [
   {
     id: 1,
     title: "Online Application",
-    desc: "Fill the admission form on our website with academic details and personal information.",
+    desc: "Fill the admission form on our website with academic details and personal information. ",
     icon: <FaLaptopCode />,
     bgColor: COLORS.red,        // Red
     textColor: "text-white",
@@ -58,16 +43,9 @@ const steps = [
     bgColor: COLORS.darkBlue,   // Dark Blue
     textColor: "text-white",
   },
+
   {
     id: 3,
-    title: "Interview & GD",
-    desc: "Showcase your communication skills, leadership potential, and career goals.",
-    icon: <FaUsers />,
-    bgColor: COLORS.yellow,     // Yellow
-    textColor: "text-[#011E5A]", // Dark text for contrast on yellow
-  },
-  {
-    id: 4,
     title: "Document Verification",
     desc: "Submit academic certificates, ID proof, and admission fee.",
     icon: <FaFileContract />,
@@ -75,9 +53,9 @@ const steps = [
     textColor: "text-white",
   },
   {
-    id: 5,
+    id: 4,
     title: "Admission Confirmation",
-    desc: "Receive offer letter and confirm your seat in India's leading BBA programme.",
+    desc: "Check the merit lists to confirm your seat in India's leading BBA programme at Indira University.",
     icon: <FaCheckCircle />,
     bgColor: COLORS.red,        // Red (Repeating for balance)
     textColor: "text-white",
@@ -122,7 +100,7 @@ How to Apply for BBA at Indira University?              </p>
         
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-y-12 md:gap-x-4 relative">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-y-12 md:gap-x-4 relative">
             {steps.map((step, index) => {
               const isActive = index < visibleSteps;
 

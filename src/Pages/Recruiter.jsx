@@ -138,13 +138,10 @@ const CompRecruiter = () => {
       <div className="text-center mb-8 md:mb-12">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#011E5A] mb-2">
           Top{" "}
-          <span className="bg-[#FCC409] text-black rounded-3xl px-4 sm:px-5 py-1 inline-block">
             Recruiters
-          </span>
         </h2>
         <p className="text-gray-600 text-sm sm:text-base md:text-lg">
-          Our students get placed in leading companies worldwide
-        </p>
+Three decades of excellence, thousands of successful careers, and a proven track record of transforming students into business leaders.         </p>
       </div>
 
       {/* Three Row Slider */}

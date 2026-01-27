@@ -45,8 +45,8 @@ function Navbar() {
             className="flex-grow text-center text-white text-md md:text-3xl font-bold"
             style={pulseTextAnimation}
           >
-           indira university school of business <br />
-            
+          <br />
+            INDIRA UNIVERSITY SCHOOL OF BUSINESS
           </div>
 
           

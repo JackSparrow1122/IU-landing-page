@@ -46,18 +46,16 @@ function CompHero() {
         {/* LEFT TEXT */}
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
           <h1 className="text-[32px] sm:text-[42px] md:text-[50px] lg:text-[60px] font-semibold">
-            Pune's No.1 Choice for <span className="text-[#FCC409]">BBA</span>
+            <span className="text-[#FCC409]">BBA</span> at Indira University Pune  
           </h1>
           <p className="md:text-2xl">
             <span className=" text-4px font-bold">
               {" "}
-              India's Fastest-Growing Business School for Future Leaders
-              <br />
+31 Years of Legacy Giving You the Education You Can Trust                <br />
             </span>
           </p>
           <p className="mt-6 text-base sm:text-lg md:text-xl bg-[#FCC409] text-black  px-2 md:px-6 rounded-xl inline-block">
-            Admission Open for 2026-27
-          </p>
+Admissions Open for 2026-27 – Limited Seats!           </p>
         </div>
 
         {/* RIGHT FORM */}

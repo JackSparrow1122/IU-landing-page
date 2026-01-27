@@ -35,50 +35,49 @@ const modalStyle = {
 const specializations = [
   {
     name: "Marketing Management",
-    duration: "3 Years",
-    fees: "₹1,50,000/year",
+   
     image: marketingImage,
-    description: "Develop expertise in digital marketing strategies, brand management, consumer behavior, and market research. This marketing degree program covers sales management, advertising, marketing analytics, social media marketing, and content strategy. Learn SEO, SEM, marketing automation, and CRM while working on real marketing campaigns.",
+    description: "Develop expertise in digital marketing strategies, brand management, consumer behavior, and market research. This marketing degree programme covers sales management, advertising, marketing analytics, social media marketing, and content strategy. Learn SEO, SEM, marketing automation, and CRM while working on real marketing campaigns.",
     careerOutcomes: [
       "Brand Manager",
       "Digital Marketing Manager",
       "Marketing Research Analyst",
       "Product Manager",
-      "Sales Manager"
+      "Sales Manager",
+      "Market Development Manager"
     ]
   },
   {
     name: "Financial Management",
-    duration: "3 Years",
-    fees: "₹1,50,000/year",
+   
     image: financialImage,
-    description: "Master corporate finance, investment analysis, financial planning, and portfolio management. This finance-focused program covers financial accounting, financial markets, risk management, financial modeling, and investment banking. Gain expertise in financial statement analysis, budgeting, capital budgeting, and stock market analysis.",
+    description: "Master corporate finance, investment analysis, financial planning, and portfolio management. This finance-focused programme covers financial accounting, financial markets, risk management, financial modeling, and investment banking. Gain expertise in financial statement analysis, budgeting, capital budgeting, and stock market analysis.",
     careerOutcomes: [
       "Financial Analyst",
       "Investment Banker",
       "Portfolio Manager",
       "Financial Planning & Analysis",
-      "Risk Management Analyst"
+      "Risk Management Analyst",
+      "Corporate Finance Manager "
     ]
   },
   {
     name: "Human Resource Management",
-    duration: "3 Years",
-    fees: "₹1,50,000/year",
+ 
     image: hrImage,
-    description: "Excel in talent acquisition, employee engagement, performance management, and organizational behavior. This HR-focused program covers recruitment strategies, training and development, compensation and benefits, labor laws, and HR analytics. Master HRIS systems, workforce planning, talent management, and employee relations.",
+    description: "Excel in talent acquisition, employee engagement, performance management, and organizational behavior. This HR-focused programme covers recruitment strategies, training and development, compensation and benefits, labor laws, and HR analytics. Master HRIS systems, workforce planning, talent management, and employee relations.",
     careerOutcomes: [
       "HR Manager",
       "Talent Acquisition Manager",
       "Learning & Development Manager",
       "Compensation & Benefits Manager",
-      "HR Business Partner"
+      "HR Business Partner",
+      "Employee Engagement Manager "
     ]
   },
   {
     name: "Digital Marketing",
-    duration: "3 Years",
-    fees: "₹1,50,000/year",
+   
     image: digitalMarketingImage,
     description: "Master SEO, SEM, social media marketing, content marketing, and marketing automation in this tech-driven program. Gain hands-on experience with Google Analytics, Google Ads, Facebook Ads, Instagram marketing, and e-commerce marketing. Includes certifications in Google Digital Marketing and HubSpot.",
     careerOutcomes: [
@@ -86,41 +85,28 @@ const specializations = [
       "Social Media Manager",
       "Content Marketing Manager",
       "Performance Marketing Manager",
-      "E-commerce Marketing Manager"
+      "E-commerce Marketing Manager",
+      "Growth Hacking Specialist"
     ]
   },
-  {
-    name: "International Business (Global Immersion)",
-    duration: "3 Years",
-    fees: "₹1,50,000/year",
-    image: internationalBusinessImage,
-    description: "Explore international trade, export-import management, global business strategy, and cross-cultural management. This globally-focused program includes overseas study tours, international internships, and foreign university collaborations. Study foreign exchange markets, international marketing, and global supply chains.",
-    careerOutcomes: [
-      "Export-Import Manager",
-      "IB Development Manager",
-      "Global Account Manager",
-      "International Market Analyst",
-      "Trade Compliance Officer"
-    ]
-  },
+  
   {
     name: "Banking and Financial Services",
-    duration: "3 Years",
-    fees: "₹1,50,000/year",
+ 
     image: bankingImage,
-    description: "Specialize in retail banking, corporate banking, investment banking, and digital banking operations. This industry-aligned program covers credit management, loan processing, banking regulations, RBI guidelines, and fintech innovations. Learn core banking solutions, mobile banking, and treasury operations.",
+    description: "Specialize in retail banking, corporate banking, investment banking, and digital banking operations. This industry-aligned programme covers credit management, loan processing, banking regulations, RBI guidelines, and fintech innovations. Learn core banking solutions, mobile banking, and treasury operations.",
     careerOutcomes: [
       "Relationship Manager",
       "Credit Analyst",
       "Branch Manager",
       "Treasury Manager",
-      "Loan Officer"
+      "Loan Officer",
+       "Wealth Management Advisor"
     ]
   },
   {
     name: "International Business Management",
-    duration: "3 Years",
-    fees: "₹1,50,000/year",
+ 
     image: internationalBusinessImage,
     description: "Integrate international marketing, global finance, international HRM, and cross-border strategy in this comprehensive program. Study multinational business strategies, global market entry modes, foreign direct investment, and international business ethics. Explore emerging markets and BRICS economies.",
     careerOutcomes: [
@@ -128,35 +114,36 @@ const specializations = [
       "Global Strategy Consultant",
       "Foreign Trade Analyst",
       "International Procurement Manager",
-      "Global Business Development Manager"
+      "Global Business Development Manager",
+      "Regional Business Manager (Asia-Pacific/Middle East/Europe)"
     ]
   },
   {
     name: "Logistics and Supply Chain Management",
-    duration: "3 Years",
-    fees: "₹1,50,000/year",
+  
     image: logisticsImage,
-    description: "Master supply chain planning, inventory management, warehouse management, procurement, and logistics optimization. This operations-focused program covers demand forecasting, supply chain analytics, ERP systems, transportation management, and vendor management. Gain training in SAP, lean management, and Six Sigma.",
+    description: "Master supply chain planning, inventory management, warehouse management, procurement, and logistics optimization. This operations-focused programme covers demand forecasting, supply chain analytics, ERP systems, transportation management, and vendor management. Gain training in SAP, lean management, and Six Sigma.",
     careerOutcomes: [
       "Supply Chain Manager",
       "Logistics Coordinator",
       "Procurement Manager",
       "Warehouse Manager",
-      "Operation Manager"
+      "Operation Manager",
+      "Demand Planning Manager"
     ]
   },
   {
     name: "Innovation and Entrepreneurship",
-    duration: "3 Years",
-    fees: "₹1,50,000/year",
+   
     image: innovationImage,
-    description: "Transform business ideas into reality with training in design thinking, lean startup methodology, business model innovation, and venture capital. This startup-focused program covers entrepreneurial finance, new venture creation, startup funding, and pitch development. Access incubation centers and mentorship from successful entrepreneurs.",
+    description: "Transform business ideas into reality with training in design thinking, lean startup methodology, business model innovation, and venture capital. This startup-focused programme covers entrepreneurial finance, new venture creation, startup funding, and pitch development. Access incubation centers and mentorship from successful entrepreneurs.",
     careerOutcomes: [
       "Startup Founder/Entrepreneur",
       "Business Development Manager",
       "Innovation Consultant",
       "Venture Capital Analyst",
-      "Product Innovation Manager"
+      "Product Innovation Manager",
+      "Corporate Innovation Manager"
     ]
   }
 ];
@@ -219,7 +206,7 @@ function BbaAdmissionCourses() {
                 className="cursor-pointer"
               >
                 <div
-                  className={`flex items-center justify-between px-4 py-4 rounded-full transition-colors duration-300 ${
+                  className={`flex items-center justify-between px-6 py-5 rounded-full transition-colors duration-300 ${
                     isSelected
                       ? "bg-[#fcc409] text-black"
                       : "text-gray-600 hover:text-black"
@@ -254,50 +241,18 @@ function BbaAdmissionCourses() {
                   {currentSpecialization.name}
                 </h3>
                 
-                <div className="flex flex-wrap gap-4 mb-6">
-                  <div className="bg-gray-100 px-4 py-2 rounded-lg">
-                    <span className="text-gray-600 text-sm">Duration:</span>
-                    <span className="ml-2 font-medium">{currentSpecialization.duration}</span>
-                  </div>
-                  <div className="bg-gray-100 px-4 py-2 rounded-lg">
-                    <span className="text-gray-600 text-sm">Fees:</span>
-                    <span className="ml-2 font-medium">{currentSpecialization.fees}</span>
-                  </div>
-                </div>
+               
 
-                {/* Image with description - New layout */}
-                <div className="flex flex-col lg:flex-row gap-8 mb-8">
-                  {/* Image container */}
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="lg:w-2/5"
-                  >
-                    <div className="relative overflow-hidden  shadow-lg">
-                      <img 
-                        src={currentSpecialization.image} 
-                        alt={currentSpecialization.name}
-                        className="w-full h-64 lg:h-72 object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                  </motion.div>
-                  
-                  {/* Description container */}
-                  <div className="lg:w-3/5">
-                    <p className="text-gray-700 leading-8 text-lg">
-                      {currentSpecialization.description}
-                    </p>
-                  </div>
-                </div>
+                <p className="text-gray-700 leading-8 mb-8 text-lg">
+                  {currentSpecialization.description}
+                </p>
               </div>
 
               <h3 className="text-xl font-semibold text-[#b1124a] mb-6">
                 Top Career Opportunities
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 ">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-12">
                 {currentSpecialization.careerOutcomes.map((outcome, index) => (
                   <motion.div
                     key={index}
@@ -312,12 +267,26 @@ function BbaAdmissionCourses() {
                 ))}
               </div>
 
+              {/* Program Highlights with Image */}
+              <div className="bg-gray-50  border border-gray-200 mb-8">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  {/* Image Section */}
+                  <div className="md:w-full">
+                    <img 
+                      src={specializations.image || currentSpecialization.image}
+                      alt="Program Highlights"
+                      className="w-full h-56 object-cover rounded-lg shadow-lg"
+                    />
+                  </div>
+                </div>
+              </div>
+
               {/* CTA Button */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setOpen(true)}
-                className="mt-8 bg-[#b1124a] text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#90103d] transition-colors duration-300"
+                className="mt-8 bg-[#b1124a] text-white w-full px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#90103d] transition-colors duration-300"
               >
                 Apply Now for {currentSpecialization.name}
               </motion.button>

@@ -112,6 +112,13 @@ function BbaAdmissionOverview() {
 
       {/* Key Highlights Below Both Sections - Same width as above */}
       <div className="px-8 md:px-16 py-8" data-aos="fade-up">
+        <h2
+        className="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-8 text-[#135883]"
+        data-aos="fade-up"
+      >
+        Why Choose Us?
+      </h2>
+     
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 justify-center max-w-auto mx-auto md:max-w-7xl">
           {cardData.map((item, index) => (
             <div
@@ -121,7 +128,7 @@ function BbaAdmissionOverview() {
               <item.icon size={40} className="text-[#FECD46] mb-4 icon" />
               <p className="text-white">
                 <span className="font-bold text-md md:text-lg block">
-                  {item.title}:
+                  {item.title}
                 </span>
               </p>
               <div className="circle absolute bottom-[-20px] right-[-20px] w-12 h-12 bg-white rounded-full shadow-2xl"></div>
