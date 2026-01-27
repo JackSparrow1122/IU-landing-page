@@ -83,7 +83,7 @@ const DomainCertifications = () => {
           {certifications.slice(0, 8).map((cert) => (
             <div
               key={cert.id}
-              className="group relative bg-[white] rounded-xl  border border-gray-200 hover:border-yellow-400 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-900/30 cursor-pointer flex flex-col h-full min-h-[150px] hover:-translate-y-1"
+              className="group relative bg-[white]   border border-gray-200 hover:border-yellow-400 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-900/30 cursor-pointer flex flex-col h-full min-h-[100px] hover:-translate-y-1"
             >
               {/* Content Wrapper for centering */}
               <div className="flex flex-col items-center justify-center text-center h-full">
@@ -105,7 +105,7 @@ const DomainCertifications = () => {
             {certifications.slice(8).map((cert) => (
               <div
                 key={cert.id}
-                className="group relative bg-white rounded-xl p-6 border border-gray-200 hover:border-yellow-400 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-900/30 cursor-pointer flex flex-col h-full min-h-[150px] hover:-translate-y-1"
+                className="group relative bg-white  p-6 border border-gray-200 hover:border-yellow-400 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-900/30 cursor-pointer flex flex-col h-full min-h-[100px] hover:-translate-y-1"
               >
                 {/* Content Wrapper for centering */}
                 <div className="flex flex-col items-center justify-center text-center h-full">

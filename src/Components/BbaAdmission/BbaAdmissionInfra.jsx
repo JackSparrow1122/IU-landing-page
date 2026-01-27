@@ -154,7 +154,7 @@ export default function CampusFacilities() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-r from-[#990000] via-[#011E5A] to-[#051D58] min-h-[300vh]"
+      className="relative bg-gradient-to-r from-[#990000] via-[#011E5A] to-[#051D58] min-h-[100vh]"
       style={{ height: `${data.length * 100}vh` }}
     >
       {/* Fixed content that stays in view */}

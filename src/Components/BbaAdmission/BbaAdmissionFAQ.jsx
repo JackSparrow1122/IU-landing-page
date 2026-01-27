@@ -99,7 +99,7 @@ function BbaAdmissionFAQ() {
   };
 
   return (
-    <section className="relative px-4 sm:px-6 md:px-12 py-16 bg-slate-50 poppins-regular overflow-hidden">
+    <section className="relative px-4 sm:px-6 md:px-12 py-16 bg-gradient-to-r from-[#990000] via-[#011E5A] to-[#051D58] overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-40">
         <div className="absolute -top-[20%] -right-[10%] w-[500px] h-[500px] rounded-full bg-blue-100 blur-3xl mix-blend-multiply filter" />
@@ -109,10 +109,10 @@ function BbaAdmissionFAQ() {
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-3">
             Frequently Asked Questions
           </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto">
+          <p className="text-white max-w-3xl mx-auto">
             Get answers to the most common questions about BBA admissions
           </p>
         </div>
