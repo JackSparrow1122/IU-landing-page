@@ -30,6 +30,8 @@ import logo27 from "../assets/Images/bba-logo/27.jpg";
 
 const CompRecruiter = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   const logos = [
     logo1,
@@ -61,29 +63,62 @@ const CompRecruiter = () => {
     logo27,
   ];
 
-  // Split logos into 3 rows
-  const logosPerRow = Math.ceil(logos.length / 3);
-  const row1 = logos.slice(0, logosPerRow);
-  const row2 = logos.slice(logosPerRow, logosPerRow * 2);
-  const row3 = logos.slice(logosPerRow * 2);
-
   useEffect(() => {
     const handleVisibilityChange = () => {
       setIsVisible(!document.hidden);
     };
 
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 768);
+      setIsTablet(width >= 768 && width < 1024);
+    };
+
+    // Initial check
+    handleResize();
+
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () =>
+    window.addEventListener("resize", handleResize);
+    
+    return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  // Dynamic rows based on screen size
+  const getRows = () => {
+    if (isMobile) {
+      // Mobile: 1 row with all logos
+      return [logos];
+    } else if (isTablet) {
+      // Tablet: 2 rows
+      const logosPerRow = Math.ceil(logos.length / 2);
+      return [
+        logos.slice(0, logosPerRow),
+        logos.slice(logosPerRow, logosPerRow * 2)
+      ];
+    } else {
+      // Desktop: 3 rows
+      const logosPerRow = Math.ceil(logos.length / 3);
+      return [
+        logos.slice(0, logosPerRow),
+        logos.slice(logosPerRow, logosPerRow * 2),
+        logos.slice(logosPerRow * 2)
+      ];
+    }
+  };
 
   // Render a single row of logos
   const renderLogoRow = (logosArray, rowIndex, animationDirection = "left") => {
     const isReverse = animationDirection === "right";
-    
+
     return (
-      <div className="logo-row relative w-full mb-6 md:mb-8">
-        <div 
+      <div 
+        key={`row-${rowIndex}`}
+        className="logo-row relative w-full mb-4 md:mb-6 lg:mb-8"
+      >
+        <div
           className={`logo-row-track flex ${isVisible ? "animate" : ""} ${
             isReverse ? "reverse-animation" : ""
           }`}
@@ -92,18 +127,22 @@ const CompRecruiter = () => {
           {logosArray.map((logo, index) => (
             <div
               key={`row-${rowIndex}-${index}`}
-              className="logo-slide flex-none mx-2 md:mx-3 lg:mx-4
-                         bg-white rounded-xl
-                         border border-[#2899A4]/40
-                         shadow-[0_6px_20px_rgba(40,153,164,0.25)]
-                         transition-all duration-300
-                         hover:shadow-[0_12px_35px_rgba(40,153,164,0.45)]
-                         hover:-translate-y-1"
+              className="logo-slide flex-none mx-1 sm:mx-2 md:mx-3 lg:mx-4
+                         bg-white rounded-lg sm:rounded-xl
+                         border border-[#2899A4]/30 sm:border-[#2899A4]/40
+                         shadow-[0_4px_12px_rgba(40,153,164,0.15)] sm:shadow-[0_6px_20px_rgba(40,153,164,0.25)]
+                         transition-all duration-300 ease-in-out
+                         hover:shadow-[0_8px_25px_rgba(40,153,164,0.35)] lg:hover:shadow-[0_12px_35px_rgba(40,153,164,0.45)]
+                         hover:-translate-y-0.5 sm:hover:-translate-y-1
+                         active:scale-95"
             >
               <img
                 src={logo}
-                alt={`Recruiter Logo ${rowIndex * logosPerRow + index + 1}`}
-                className="h-14 md:h-20 lg:h-24 max-w-[120px] md:max-w-[140px] lg:max-w-[160px] object-contain p-2 md:p-2"
+                alt={`Recruiter Logo ${rowIndex * logosArray.length + index + 1}`}
+                className="h-10 sm:h-14 md:h-16 lg:h-20 xl:h-24 
+                           max-w-[80px] sm:max-w-[100px] md:max-w-[120px] lg:max-w-[140px] xl:max-w-[160px]
+                           object-contain p-1 sm:p-2 md:p-3"
+                loading="lazy"
               />
             </div>
           ))}
@@ -112,18 +151,22 @@ const CompRecruiter = () => {
           {logosArray.map((logo, index) => (
             <div
               key={`row-${rowIndex}-duplicate-${index}`}
-              className="logo-slide flex-none mx-2 md:mx-3 lg:mx-4
-                         bg-white rounded-xl
-                         border border-[#2899A4]/40
-                         shadow-[0_6px_20px_rgba(40,153,164,0.25)]
-                         transition-all duration-300
-                         hover:shadow-[0_12px_35px_rgba(40,153,164,0.45)]
-                         hover:-translate-y-1"
+              className="logo-slide flex-none mx-1 sm:mx-2 md:mx-3 lg:mx-4
+                         bg-white rounded-lg sm:rounded-xl
+                         border border-[#2899A4]/30 sm:border-[#2899A4]/40
+                         shadow-[0_4px_12px_rgba(40,153,164,0.15)] sm:shadow-[0_6px_20px_rgba(40,153,164,0.25)]
+                         transition-all duration-300 ease-in-out
+                         hover:shadow-[0_8px_25px_rgba(40,153,164,0.35)] lg:hover:shadow-[0_12px_35px_rgba(40,153,164,0.45)]
+                         hover:-translate-y-0.5 sm:hover:-translate-y-1
+                         active:scale-95"
             >
               <img
                 src={logo}
-                alt={`Recruiter Logo ${rowIndex * logosPerRow + index + 1}`}
-                className="h-14 md:h-20 lg:h-24 max-w-[120px] md:max-w-[140px] lg:max-w-[160px] object-contain p-2 md:p-2"
+                alt={`Recruiter Logo ${rowIndex * logosArray.length + index + 1}`}
+                className="h-10 sm:h-14 md:h-16 lg:h-20 xl:h-24 
+                           max-w-[80px] sm:max-w-[100px] md:max-w-[120px] lg:max-w-[140px] xl:max-w-[160px]
+                           object-contain p-1 sm:p-2 md:p-3"
+                loading="lazy"
               />
             </div>
           ))}
@@ -132,50 +175,86 @@ const CompRecruiter = () => {
     );
   };
 
+  const rows = getRows();
+  const animationDirections = ["left", "right", "left"]; // Pattern for desktop
+
   return (
-    <div className="logo-slider-section py-8 md:py-12 roboto-regular overflow-hidden bg-white">
+    <div className="logo-slider-section py-6 sm:py-8 md:py-10 lg:py-12 roboto-regular overflow-hidden bg-white">
       {/* Heading */}
-      <div className="text-center mb-8 md:mb-12">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#011E5A] mb-2">
-          Top{" "}
-            Recruiters
+      <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4 sm:px-6 md:px-8">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 
+                       font-bold text-[#011E5A] mb-2 md:mb-3 lg:mb-4">
+          Top Recruiters
         </h2>
-        <p className="text-gray-600 text-sm sm:text-base md:text-lg">
-Three decades of excellence, thousands of successful careers, and a proven track record of transforming students into business leaders.         </p>
+        <p className="text-gray-600 text-xs sm:text-sm md:text-base lg:text-lg 
+                     max-w-2xl sm:max-w-3xl md:max-w-4xl mx-auto
+                     px-2 sm:px-4 md:px-6 lg:px-8">
+          Three decades of excellence, thousands of successful careers, and a
+          proven track record of transforming students into business leaders.
+        </p>
       </div>
 
-      {/* Three Row Slider */}
-      <div className="logo-slider-container relative w-full max-w-7xl mx-auto px-4">
-        {/* Row 1 - Left to Right */}
-        {renderLogoRow(row1, 1, "left")}
-        
-        {/* Row 2 - Right to Left */}
-        {renderLogoRow(row2, 2, "right")}
-        
-        {/* Row 3 - Left to Right */}
-        {renderLogoRow(row3, 3, "left")}
+      {/* Logo Slider */}
+      <div className="logo-slider-container relative w-full  mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+        {/* Render rows */}
+        {rows.map((rowLogos, index) => (
+          renderLogoRow(
+            rowLogos, 
+            index + 1, 
+            isMobile ? "left" : (isTablet ? (index % 2 === 0 ? "left" : "right") : animationDirections[index])
+          )
+        ))}
 
         {/* Fade edges for each row */}
-        <div className="absolute left-0 top-0 h-full w-16 md:w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 h-full w-16 md:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 h-full w-8 sm:w-12 md:w-16 lg:w-20 xl:w-24 
+                       bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 h-full w-8 sm:w-12 md:w-16 lg:w-20 xl:w-24 
+                       bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
       </div>
+
+      {/* Mobile indicator dots */}
+      {isMobile && (
+        <div className="flex justify-center items-center mt-4 space-x-2">
+          <div className="w-2 h-2 rounded-full bg-[#2899A4] opacity-100"></div>
+          <div className="text-xs text-gray-500">Swipe to see more →</div>
+        </div>
+      )}
 
       {/* CSS */}
       <style>{`
         .logo-slider-container {
-          padding: 0 10px;
+          padding: 0 4px;
+        }
+
+        @media (min-width: 640px) {
+          .logo-slider-container {
+            padding: 0 8px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .logo-slider-container {
+            padding: 0 12px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .logo-slider-container {
+            padding: 0 16px;
+          }
         }
 
         .logo-row-track {
           width: fit-content;
+          will-change: transform;
         }
 
         .logo-row-track.animate {
-          animation: slideLeft 50s linear infinite;
+          animation: slideLeft linear infinite;
         }
 
         .logo-row-track.reverse-animation.animate {
-          animation: slideRight 45s linear infinite;
+          animation: slideRight linear infinite;
         }
 
         .logo-row:hover .logo-row-track {
@@ -200,48 +279,85 @@ Three decades of excellence, thousands of successful careers, and a proven track
           }
         }
 
-        /* Different animation speeds for visual interest */
-        .logo-row:nth-child(1) .logo-row-track.animate {
-          animation-duration: 50s;
-        }
-        
-        .logo-row:nth-child(2) .logo-row-track.animate {
-          animation-duration: 45s;
-        }
-        
-        .logo-row:nth-child(3) .logo-row-track.animate {
-          animation-duration: 55s;
+        /* Mobile (xs - sm) */
+        @media (max-width: 639px) {
+          .logo-row-track.animate {
+            animation-duration: 40s;
+          }
+          
+          .logo-row-track.reverse-animation.animate {
+            animation-duration: 35s;
+          }
         }
 
-        @media (max-width: 768px) {
+        /* Small tablets (sm - md) */
+        @media (min-width: 640px) and (max-width: 767px) {
           .logo-row:nth-child(1) .logo-row-track.animate {
             animation-duration: 35s;
           }
           
-          .logo-row:nth-child(2) .logo-row-track.animate {
-            animation-duration: 30s;
+          .logo-row:nth-child(2) .logo-row-track.reverse-animation.animate {
+            animation-duration: 32s;
+          }
+        }
+
+        /* Tablets (md - lg) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .logo-row:nth-child(1) .logo-row-track.animate {
+            animation-duration: 45s;
           }
           
-          .logo-row:nth-child(3) .logo-row-track.animate {
+          .logo-row:nth-child(2) .logo-row-track.reverse-animation.animate {
             animation-duration: 40s;
           }
         }
 
-        @media (max-width: 640px) {
-          .logo-row {
-            margin-bottom: 4px;
-          }
-          
+        /* Desktop (lg - xl) */
+        @media (min-width: 1024px) and (max-width: 1279px) {
           .logo-row:nth-child(1) .logo-row-track.animate {
-            animation-duration: 25s;
+            animation-duration: 50s;
           }
           
-          .logo-row:nth-child(2) .logo-row-track.animate {
-            animation-duration: 22s;
+          .logo-row:nth-child(2) .logo-row-track.reverse-animation.animate {
+            animation-duration: 45s;
           }
           
           .logo-row:nth-child(3) .logo-row-track.animate {
-            animation-duration: 28s;
+            animation-duration: 55s;
+          }
+        }
+
+        /* Large Desktop (xl+) */
+        @media (min-width: 1280px) {
+          .logo-row:nth-child(1) .logo-row-track.animate {
+            animation-duration: 60s;
+          }
+          
+          .logo-row:nth-child(2) .logo-row-track.reverse-animation.animate {
+            animation-duration: 55s;
+          }
+          
+          .logo-row:nth-child(3) .logo-row-track.animate {
+            animation-duration: 65s;
+          }
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+          .logo-row-track.animate,
+          .logo-row-track.reverse-animation.animate {
+            animation-duration: 120s !important;
+          }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+          .logo-slide {
+            touch-action: pan-y;
+          }
+          
+          .logo-slide:active {
+            transform: scale(0.98);
           }
         }
       `}</style>
