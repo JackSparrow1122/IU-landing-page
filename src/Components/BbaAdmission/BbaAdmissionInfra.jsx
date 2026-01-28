@@ -3,7 +3,6 @@ import img1 from "../../assets/club.jpg";
 import img2 from "../../assets/Event.jpg";
 import img3 from "../../assets/Facilities.jpg";
 
-
 const data = [
   {
     id: 1,
@@ -48,9 +47,9 @@ export default function CampusFacilities() {
       behavior: "smooth",
     });
 
-    // Reset scrolling flag after animation
     setTimeout(() => {
       isScrollingRef.current = false;
+      setActiveIndex(index);
     }, 500);
   };
 
@@ -71,7 +70,6 @@ export default function CampusFacilities() {
         
         if (newIndex !== activeIndex) {
           isScrollingRef.current = true;
-          setActiveIndex(newIndex);
           
           const sectionHeight = section.clientHeight;
           const targetScroll = section.offsetTop + (newIndex * sectionHeight) / data.length;
@@ -83,6 +81,7 @@ export default function CampusFacilities() {
 
           setTimeout(() => {
             isScrollingRef.current = false;
+            setActiveIndex(newIndex);
           }, 500);
         }
       }
@@ -151,88 +150,126 @@ export default function CampusFacilities() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeIndex]);
 
+  // Listen for scroll to update active index
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || isScrollingRef.current) return;
+
+      const section = sectionRef.current;
+      const rect = section.getBoundingClientRect();
+      
+      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+        const scrollProgress = -rect.top / rect.height;
+        const newIndex = Math.floor(scrollProgress * data.length);
+        
+        if (newIndex !== activeIndex) {
+          setActiveIndex(newIndex);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeIndex]);
+
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-r from-[#990000] via-[#011E5A] to-[#051D58] min-h-[100vh]"
+      className="relative min-h-[100vh] bg-gradient-to-r from-[#990000] via-[#011E5A] to-[#051D58]"
       style={{ height: `${data.length * 100}vh` }}
     >
-      {/* Fixed content that stays in view */}
-      <div className="sticky top-0 h-screen flex items-center justify-center">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-8 items-center">
-            {/* LEFT SIDE - Content */}
-            <div className="w-full lg:w-1/1">
-              {data.map((item, index) => (
-                <div
-                  key={item.id}
-                  className={`transition-all duration-700 ease-out ${
-                    activeIndex === index
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 absolute translate-y-8 pointer-events-none"
-                  }`}
-                >
-                  <div className="max-w-2xl">
+      {/* Sticky container that stays in view */}
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+        {/* Background images inside sticky container */}
+        <div className="absolute inset-0">
+          {data.map((item, index) => (
+            <div
+              key={item.id}
+              className={`absolute inset-0 transition-all duration-1000 ease-out ${
+                activeIndex === index
+                  ? "opacity-80"
+                  : "opacity-0 pointer-events-none"
+              }`}
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover"
+              />
+              {/* Overlay for better text visibility */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#990000]/40 via-[#011E5A]/70 to-[#051D58]/40" />
+            </div>
+          ))}
+        </div>
+
+        {/* Content Container - Inside sticky div */}
+        <div className="relative container mx-auto px-4 lg:px-8 z-10">
+          <div className="max-w-6xl mx-auto">
+            {data.map((item, index) => (
+              <div
+                key={item.id}
+                className={`transition-all duration-700 ease-out text-center ${
+                  activeIndex === index
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 absolute inset-x-0 pointer-events-none"
+                }`}
+              >
+                <div className="mb-8">
+                  <span className="inline-block px-4 py-1 bg-gradient-to-r from-[#FCC409] to-[#FFD700] text-black text-sm font-semibold rounded-full mb-4">
+                    Campus Highlights
+                  </span>
                   
-                    <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#FCC409] leading-tight">
-                      {item.title}
-                    </h2>
+                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+                    {item.title}
+                  </h2>
                   
-                    <p className="text-white text-lg md:text-xl leading-relaxed">
+                  <div className="w-24 h-1 bg-gradient-to-r from-[#FCC409] to-[#FFD700] mx-auto mb-8"></div>
+                  
+                  <div className="max-w-3xl mx-auto">
+                    <p className="text-lg md:text-xl text-white/90 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* RIGHT SIDE - Image */}
-            <div className="w-full lg:w-1/1">
-              <div className="relative aspect-video  overflow-hidden shadow-2xl">
-                {data.map((item, index) => (
-                  <div
-                    key={item.id}
-                    className={`absolute inset-0 transition-all duration-700 ease-out ${
-                      activeIndex === index
-                        ? "opacity-100 scale-100"
-                        : "opacity-0 scale-95"
-                    }`}
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                  </div>
-                ))}
               </div>
-
-            
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator - shows progress through sections */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
-        <div className="flex flex-col items-center space-y-2">
+      {/* Scroll indicator dots */}
+      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-10">
+        <div className="flex flex-col items-center space-y-4">
           {data.map((_, index) => (
             <button
               key={index}
               onClick={() => handleDotClick(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === activeIndex
-                  ? "bg-blue-600 scale-125"
-                  : index < activeIndex
-                  ? "bg-blue-300"
-                  : "bg-gray-300 hover:bg-gray-400"
+              className={`flex items-center transition-all duration-300 ${
+                index === activeIndex ? "scale-125" : "hover:scale-110"
               }`}
-              aria-label={`Go to section ${index + 1}`}
-            />
+              aria-label={`Go to ${data[index].title}`}
+            >
+              <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === activeIndex
+                  ? "bg-[#FCC409]"
+                  : "bg-white/50"
+              }`} />
+              {index === activeIndex && (
+                <span className="ml-3 text-white font-medium text-sm animate-fadeIn">
+                  {data[index].title}
+                </span>
+              )}
+            </button>
           ))}
         </div>
+      </div>
+
+      {/* Scroll hint */}
+      <div className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-300 ${
+        activeIndex === data.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100 animate-bounce'
+      }`}>
+       
       </div>
     </section>
   );
