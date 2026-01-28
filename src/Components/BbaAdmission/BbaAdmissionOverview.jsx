@@ -78,7 +78,7 @@ function BbaAdmissionOverview() {
     {
       icon: FaGraduationCap,
       title: "Experiential Learning Methodology",
-    }
+    },
   ];
 
   return (
@@ -93,10 +93,11 @@ function BbaAdmissionOverview() {
 
           <p className="text-sm md:text-lg text-gray-600 tracking-wide">
             Indira University – SOB Pune stands among the top BBA colleges in
-            India, offering a world-class Bachelor of Business Administration
-            programme designed for aspiring business leaders, entrepreneurs, and
-            management professionals. Our BBA course after 12th provides the
-            perfect foundation for MBA aspirants and corporate careers.
+            India, offering an industry curated curriculum under Bachelor of
+            Business Administration (BBA) programme designed for aspiring
+            business leaders, entrepreneurs, and management professionals. Our
+            BBA course after 12th provides the perfect foundation for MBA
+            aspirants and corporate careers.
           </p>
         </div>
 
@@ -113,12 +114,12 @@ function BbaAdmissionOverview() {
       {/* Key Highlights Below Both Sections - Same width as above */}
       <div className="px-8 md:px-16 py-8" data-aos="fade-up">
         <h2
-        className="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-8 text-[#135883]"
-        data-aos="fade-up"
-      >
-        Why Choose Us?
-      </h2>
-     
+          className="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-8 text-[#135883]"
+          data-aos="fade-up"
+        >
+          Why Choose Us?
+        </h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 justify-center max-w-auto mx-auto md:max-w-7xl">
           {cardData.map((item, index) => (
             <div

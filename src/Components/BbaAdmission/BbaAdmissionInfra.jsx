@@ -29,31 +29,66 @@ const data = [
 
 export default function CampusFacilities() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isLocked, setIsLocked] = useState(false);
   const sectionRef = useRef(null);
   const isScrollingRef = useRef(false);
+  const touchStartYRef = useRef(0);
+  const lastScrollTimeRef = useRef(0);
 
   // Function for dot click navigation
   const handleDotClick = (index) => {
-    if (!sectionRef.current || isScrollingRef.current) return;
-
+    if (isScrollingRef.current) return;
+    
     isScrollingRef.current = true;
-    const section = sectionRef.current;
-    const sectionHeight = section.clientHeight;
-    const targetScroll = section.offsetTop + (index * sectionHeight) / data.length;
-
-    window.scrollTo({
-      top: targetScroll,
-      behavior: "smooth",
-    });
+    setActiveIndex(index);
+    
+    // Smooth scroll to section
+    if (sectionRef.current) {
+      const section = sectionRef.current;
+      const sectionHeight = section.clientHeight;
+      const targetScroll = section.offsetTop + (index * sectionHeight) / data.length;
+      
+      window.scrollTo({
+        top: targetScroll,
+        behavior: "smooth",
+      });
+    }
 
     setTimeout(() => {
       isScrollingRef.current = false;
-      setActiveIndex(index);
-    }, 500);
+    }, 800);
   };
 
-  // Handle wheel/touch scroll
+  // Handle scroll events
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || isScrollingRef.current) return;
+
+      const now = Date.now();
+      const section = sectionRef.current;
+      const rect = section.getBoundingClientRect();
+      
+      // Only update if section is in view and enough time has passed
+      if (now - lastScrollTimeRef.current < 800) return;
+      
+      if (rect.top <= 0 && rect.bottom >= 0) {
+        const scrollProgress = -rect.top / rect.height;
+        const newIndex = Math.min(
+          data.length - 1, 
+          Math.max(0, Math.floor(scrollProgress * data.length))
+        );
+        
+        if (newIndex !== activeIndex) {
+          lastScrollTimeRef.current = now;
+          setActiveIndex(newIndex);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeIndex]);
+
+  // Handle wheel scroll
   useEffect(() => {
     const handleWheel = (e) => {
       if (!sectionRef.current || isScrollingRef.current) return;
@@ -63,65 +98,87 @@ export default function CampusFacilities() {
       
       // Check if we're inside the section
       if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+        const delta = Math.sign(e.deltaY);
+        const direction = delta > 0 ? 'down' : 'up';
+        
+        // Prevent default only when at boundaries to avoid locking
+        if ((direction === 'down' && activeIndex === data.length - 1) ||
+            (direction === 'up' && activeIndex === 0)) {
+          return; // Allow normal scroll at boundaries
+        }
+        
         e.preventDefault();
         
-        const delta = e.deltaY > 0 ? 1 : -1;
-        const newIndex = Math.min(data.length - 1, Math.max(0, activeIndex + delta));
+        // Calculate next index
+        let newIndex = activeIndex;
+        if (delta > 0) {
+          newIndex = Math.min(data.length - 1, activeIndex + 1);
+        } else if (delta < 0) {
+          newIndex = Math.max(0, activeIndex - 1);
+        }
         
         if (newIndex !== activeIndex) {
-          isScrollingRef.current = true;
-          
-          const sectionHeight = section.clientHeight;
-          const targetScroll = section.offsetTop + (newIndex * sectionHeight) / data.length;
-          
-          window.scrollTo({
-            top: targetScroll,
-            behavior: "smooth",
-          });
-
-          setTimeout(() => {
-            isScrollingRef.current = false;
-            setActiveIndex(newIndex);
-          }, 500);
+          handleDotClick(newIndex);
         }
       }
     };
 
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [activeIndex]);
+
+  // Handle touch events for mobile
+  useEffect(() => {
     const handleTouchStart = (e) => {
       if (!sectionRef.current) return;
+      
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
       
       if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-        setIsLocked(true);
+        touchStartYRef.current = e.touches[0].clientY;
       }
     };
 
-    const handleTouchMove = (e) => {
-      if (isLocked) {
-        e.preventDefault();
+    const handleTouchEnd = (e) => {
+      if (!sectionRef.current || isScrollingRef.current) return;
+      
+      const section = sectionRef.current;
+      const rect = section.getBoundingClientRect();
+      
+      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+        const touchEndY = e.changedTouches[0].clientY;
+        const deltaY = touchStartYRef.current - touchEndY;
+        
+        // Minimum swipe distance
+        if (Math.abs(deltaY) < 50) return;
+        
+        const direction = deltaY > 0 ? 'down' : 'up';
+        
+        // Calculate next index
+        let newIndex = activeIndex;
+        if (direction === 'down') {
+          newIndex = Math.min(data.length - 1, activeIndex + 1);
+        } else {
+          newIndex = Math.max(0, activeIndex - 1);
+        }
+        
+        if (newIndex !== activeIndex) {
+          handleDotClick(newIndex);
+        }
       }
     };
 
-    const handleTouchEnd = () => {
-      setIsLocked(false);
-    };
-
-    // Add both wheel and touch events
-    window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-    window.addEventListener("touchend", handleTouchEnd);
-
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+    
     return () => {
-      window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [activeIndex, isLocked]);
+  }, [activeIndex]);
 
-  // Handle keyboard arrow keys
+  // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!sectionRef.current || isScrollingRef.current) return;
@@ -130,18 +187,20 @@ export default function CampusFacilities() {
       const rect = section.getBoundingClientRect();
       
       if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+        let newIndex = activeIndex;
+        
         if (e.key === "ArrowDown" || e.key === "ArrowRight") {
           e.preventDefault();
-          const newIndex = Math.min(data.length - 1, activeIndex + 1);
-          if (newIndex !== activeIndex) {
-            handleDotClick(newIndex);
-          }
+          newIndex = Math.min(data.length - 1, activeIndex + 1);
         } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
           e.preventDefault();
-          const newIndex = Math.max(0, activeIndex - 1);
-          if (newIndex !== activeIndex) {
-            handleDotClick(newIndex);
-          }
+          newIndex = Math.max(0, activeIndex - 1);
+        } else {
+          return;
+        }
+        
+        if (newIndex !== activeIndex) {
+          handleDotClick(newIndex);
         }
       }
     };
@@ -150,27 +209,10 @@ export default function CampusFacilities() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeIndex]);
 
-  // Listen for scroll to update active index
+  // Reset scrolling flag on mount
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || isScrollingRef.current) return;
-
-      const section = sectionRef.current;
-      const rect = section.getBoundingClientRect();
-      
-      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-        const scrollProgress = -rect.top / rect.height;
-        const newIndex = Math.floor(scrollProgress * data.length);
-        
-        if (newIndex !== activeIndex) {
-          setActiveIndex(newIndex);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeIndex]);
+    isScrollingRef.current = false;
+  }, []);
 
   return (
     <section
@@ -185,9 +227,9 @@ export default function CampusFacilities() {
           {data.map((item, index) => (
             <div
               key={item.id}
-              className={`absolute inset-0 transition-all duration-1000 ease-out ${
+              className={`absolute inset-0 transition-all duration-700 ease-out ${
                 activeIndex === index
-                  ? "opacity-80"
+                  ? "opacity-80 z-10"
                   : "opacity-0 pointer-events-none"
               }`}
             >
@@ -203,7 +245,7 @@ export default function CampusFacilities() {
         </div>
 
         {/* Content Container - Inside sticky div */}
-        <div className="relative container mx-auto px-4 lg:px-8 z-10">
+        <div className="relative container mx-auto px-4 lg:px-8 z-20">
           <div className="max-w-6xl mx-auto">
             {data.map((item, index) => (
               <div
@@ -231,45 +273,52 @@ export default function CampusFacilities() {
                     </p>
                   </div>
                 </div>
-
               </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Scroll indicator dots */}
-      {/* <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-10">
-        <div className="flex flex-col items-center space-y-4">
+        {/* Navigation Dots */}
+        <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-30 hidden md:flex flex-col gap-4">
           {data.map((_, index) => (
             <button
               key={index}
               onClick={() => handleDotClick(index)}
-              className={`flex items-center transition-all duration-300 ${
-                index === activeIndex ? "scale-125" : "hover:scale-110"
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                activeIndex === index
+                  ? "bg-gradient-to-r from-[#FCC409] to-[#FFD700] scale-125"
+                  : "bg-white/50 hover:bg-white/80"
               }`}
-              aria-label={`Go to ${data[index].title}`}
-            >
-              <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === activeIndex
-                  ? "bg-[#FCC409]"
-                  : "bg-white/50"
-              }`} />
-              {index === activeIndex && (
-                <span className="ml-3 text-white font-medium text-sm animate-fadeIn">
-                  {data[index].title}
-                </span>
-              )}
-            </button>
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
         </div>
-      </div> */}
+
+        {/* Mobile Navigation Dots */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-3 md:hidden">
+          {data.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handleDotClick(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                activeIndex === index
+                  ? "bg-gradient-to-r from-[#FCC409] to-[#FFD700] scale-125"
+                  : "bg-white/50"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
 
       {/* Scroll hint */}
-      <div className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-300 ${
-        activeIndex === data.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100 animate-bounce'
+      <div className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-300 flex flex-col items-center ${
+        activeIndex === data.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}>
-       
+        <span className="text-white/70 text-sm mb-2">Scroll down</span>
+        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-gradient-to-b from-[#FCC409] to-[#FFD700] rounded-full mt-2 animate-bounce" />
+        </div>
       </div>
     </section>
   );

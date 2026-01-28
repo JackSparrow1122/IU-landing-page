@@ -38,7 +38,7 @@ const specializations = [
     duration: "3 Years",
     fees: "₹1,50,000/year",
     image: marketingImage,
-    description: "Develop expertise in digital marketing strategies, brand management, consumer behavior, and market research. This marketing degree programme covers sales management, advertising, marketing analytics, social media marketing, and content strategy. Learn SEO, SEM, marketing automation, and CRM while working on real marketing campaigns.",
+    description: "Develop expertise in digital marketing strategies, brand management, consumer behavior, and market research. This marketing degree program covers sales management, advertising, marketing analytics, social media marketing, and content strategy. Learn SEO, SEM, marketing automation, and CRM while working on real marketing campaigns. Graduate ready for roles as Brand Manager, Marketing Executive, Product Manager, or Market Research Analyst with skills in integrated marketing communications and customer engagement strategies. ",
     careerOutcomes: [
       "Brand Manager",
       "Digital Marketing Manager",
@@ -53,7 +53,7 @@ const specializations = [
     duration: "3 Years",
     fees: "₹1,50,000/year",
     image: financialImage,
-    description: "Master corporate finance, investment analysis, financial planning, and portfolio management. This finance-focused programme covers financial accounting, financial markets, risk management, financial modeling, and investment banking. Gain expertise in financial statement analysis, budgeting, capital budgeting, and stock market analysis.",
+    description: "Master corporate finance, investment analysis, financial planning, and portfolio management. This finance-focused program covers financial accounting, financial markets, risk management, financial modeling, and investment banking. Gain expertise in financial statement analysis, budgeting, capital budgeting, and stock market analysis. Prepare for careers as Financial Analyst, Investment Banker, Financial Planner, or Treasury Manager with training in financial software, derivatives trading, and wealth management. ",
     careerOutcomes: [
       "Financial Analyst",
       "Investment Banker",
@@ -68,7 +68,7 @@ const specializations = [
   duration: "3 Years",
     fees: "₹1,50,000/year",
     image: hrImage,
-    description: "Excel in talent acquisition, employee engagement, performance management, and organizational behavior. This HR-focused programme covers recruitment strategies, training and development, compensation and benefits, labor laws, and HR analytics. Master HRIS systems, workforce planning, talent management, and employee relations.",
+    description: "Excel in talent acquisition, employee engagement, performance management, and organizational behavior. This HR-focused program covers recruitment strategies, training and development, compensation and benefits, labor laws, and HR analytics. Master HRIS systems, workforce planning, talent management, and employee relations. Graduate ready for roles as HR Manager, Talent Acquisition Specialist, Training Manager, or HR Business Partner with expertise in performance appraisal systems and change management. ",
     careerOutcomes: [
       "HR Manager",
       "Talent Acquisition Manager",
@@ -83,7 +83,7 @@ const specializations = [
     duration: "3 Years",
     fees: "₹1,50,000/year",
     image: digitalMarketingImage,
-    description: "Master SEO, SEM, social media marketing, content marketing, and marketing automation in this tech-driven program. Gain hands-on experience with Google Analytics, Google Ads, Facebook Ads, Instagram marketing, and e-commerce marketing. Includes certifications in Google Digital Marketing and HubSpot.",
+    description: "Master SEO, SEM, social media marketing, content marketing, and marketing automation in this tech-driven program. Gain hands-on experience with Google Analytics, Google Ads, Facebook Ads, Instagram marketing, and e-commerce marketing. Learn conversion rate optimization, influencer marketing, email marketing, and digital advertising strategies. Includes certifications in Google Digital Marketing and HubSpot. Graduate as Digital Marketing Manager, SEO Specialist, Social Media Manager, or Content Strategist. ",
     careerOutcomes: [
       "SEO/SEM Specialist",
       "Social Media Manager",
@@ -99,7 +99,7 @@ const specializations = [
   duration: "3 Years",
     fees: "₹1,50,000/year",
     image: bankingImage,
-    description: "Specialize in retail banking, corporate banking, investment banking, and digital banking operations. This industry-aligned programme covers credit management, loan processing, banking regulations, RBI guidelines, and fintech innovations. Learn core banking solutions, mobile banking, and treasury operations.",
+    description: "Specialize in retail banking, corporate banking, investment banking, and digital banking operations. This industry-aligned program covers credit management, loan processing, banking regulations, RBI guidelines, and fintech innovations. Learn core banking solutions, mobile banking, treasury operations, trade finance, and banking compliance. Graduate ready for positions in public sector banks, private banks, NBFCs, or fintech companies with expertise in banking technology and relationship management. ",
     careerOutcomes: [
       "Relationship Manager",
       "Credit Analyst",
@@ -114,7 +114,7 @@ const specializations = [
   duration: "3 Years",
     fees: "₹1,50,000/year",
     image: internationalBusinessImage,
-    description: "Integrate international marketing, global finance, international HRM, and cross-border strategy in this comprehensive program. Study multinational business strategies, global market entry modes, foreign direct investment, and international business ethics. Explore emerging markets and BRICS economies.",
+    description: "Integrate international marketing, global finance, international HRM, and cross-border strategy in this comprehensive program. Study multinational business strategies, global market entry modes, foreign direct investment, and international business ethics. Explore emerging markets, BRICS economies, global entrepreneurship, and international negotiations. Prepare for roles as International Business Manager, Global Strategy Consultant, or Trade Analyst with cultural intelligence and global leadership skills. ",
     careerOutcomes: [
       "International Operations Manager",
       "Global Strategy Consultant",
@@ -129,7 +129,7 @@ const specializations = [
    duration: "3 Years",
     fees: "₹1,50,000/year",
     image: logisticsImage,
-    description: "Master supply chain planning, inventory management, warehouse management, procurement, and logistics optimization. This operations-focused programme covers demand forecasting, supply chain analytics, ERP systems, transportation management, and vendor management. Gain training in SAP, lean management, and Six Sigma.",
+    description: "Master supply chain planning, inventory management, warehouse management, procurement, and logistics optimization. This operations-focused program covers demand forecasting, supply chain analytics, ERP systems, transportation management, and vendor management. Gain training in SAP, lean management, Six Sigma, and supply chain risk management. Graduate as Supply Chain Manager, Logistics Coordinator, Procurement Manager, or Operations Analyst specializing in e-commerce logistics and distribution management. ",
     careerOutcomes: [
       "Supply Chain Manager",
       "Logistics Coordinator",
@@ -144,7 +144,7 @@ const specializations = [
     duration: "3 Years",
     fees: "₹1,50,000/year",
     image: innovationImage,
-    description: "Transform business ideas into reality with training in design thinking, lean startup methodology, business model innovation, and venture capital. This startup-focused programme covers entrepreneurial finance, new venture creation, startup funding, and pitch development. Access incubation centers and mentorship from successful entrepreneurs.",
+    description: "Transform business ideas into reality with training in design thinking, lean startup methodology, business model innovation, and venture capital. This startup-focused program covers entrepreneurial finance, new venture creation, startup funding, and pitch development. Access incubation centers, mentorship from successful entrepreneurs, and startup networking events. Graduate ready to become an entrepreneur, startup founder, innovation consultant, or business development manager with expertise in fundraising strategies and scalable business models. ",
     careerOutcomes: [
       "Startup Founder/Entrepreneur",
       "Business Development Manager",
