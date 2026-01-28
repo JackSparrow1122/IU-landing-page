@@ -40,7 +40,7 @@ function Footer() {
 
               <div className="flex items-center space-x-4">
                 <i className="fas fa-phone-alt text-2xl hover:text-green-500"></i>
-                <p>020 6675 9523 / +91 77589 22688</p>
+                <p>020-67103909/935/927/900  | +91 92265 35466</p>
               </div>
 
               <div className="flex items-center space-x-4">

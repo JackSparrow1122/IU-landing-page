@@ -20,7 +20,6 @@ function BbaAdmission() {
       <BbaAdmissionTopPlacement />
       <Recruiter/>
       <BbaAdmissionOverview />
-      
       <BbaAdmissionCourses />
       <BbaDomainCertifications />
       <BBAAdmissionProcess />
