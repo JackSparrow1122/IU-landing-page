@@ -55,7 +55,7 @@ function CompHero() {
             </span>
           </p>
           <p className="mt-6 text-base sm:text-lg md:text-xl bg-[#FCC409] text-black  px-2 md:px-6 rounded-xl inline-block">
-Admissions Open for 2026-27 – Limited Seats!           </p>
+Admissions Open for 2026-27           </p>
         </div>
 
         {/* RIGHT FORM */}
