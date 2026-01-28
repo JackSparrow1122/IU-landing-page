@@ -239,7 +239,7 @@ export default function CampusFacilities() {
       </div>
 
       {/* Scroll indicator dots */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-10">
+      {/* <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-10">
         <div className="flex flex-col items-center space-y-4">
           {data.map((_, index) => (
             <button
@@ -263,7 +263,7 @@ export default function CampusFacilities() {
             </button>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Scroll hint */}
       <div className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-300 ${
