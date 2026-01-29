@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Image1 from "../../assets/Program Overview 3.jpg";
+import Image1 from "../../assets/Building.jpg";
 
 // AOS
 import AOS from "aos";
@@ -84,30 +84,39 @@ function BbaAdmissionOverview() {
   return (
     <div className="flex flex-col">
       {/* Main Content with Left-Right Layout */}
-      <div className="flex flex-col md:flex-row-reverse items-center gap-8 px-8 md:px-16 py-6 poppins-regular overflow-hidden">
-        {/* Left Part: Program Overview */}
-        <div className="flex-1" data-aos="fade-right">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#135883] mb-4">
-            Top BBA University in Maharashtra
-          </h2>
+      <div className="relative w-full px-6 md:px-16 py-10 poppins-regular">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-right bg-no-repeat bg-contain md:bg-contain"
+          style={{ backgroundImage: `url(${Image1})` }}
+        />
 
-          <p className="text-sm md:text-lg text-gray-600 tracking-wide">
-            Indira University – SOB Pune stands among the top BBA colleges in
-            India, offering an industry curated curriculum under Bachelor of
-            Business Administration (BBA) programme designed for aspiring
-            business leaders, entrepreneurs, and management professionals. Our
-            BBA course after 12th provides the perfect foundation for MBA
-            aspirants and corporate careers.
-          </p>
-        </div>
+        {/* Dark Overlay (optional but better readability) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#990000] via-[#011E5A] to-[#051D58]/5" />
 
-        {/* Right Part: Single Image */}
-        <div className="flex-1 w-full" data-aos="fade-left">
-          <img
-            src={Image1}
-            alt="BBA Programme"
-            className="w-full h-[250px] md:h-[420px] object-contain"
-          />
+        {/* Content */}
+        <div className="lg:w-2/3 text-white" data-aos="fade-right">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            Top BBA College in{" "}
+            <span className="text-[#FECD46]">Maharashtra</span>
+          </h1>
+
+          <div className="space-y-4">
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+              Indira University – SOB Pune stands among the{" "}
+              <span className="font-semibold text-white">
+                top BBA colleges in India
+              </span>
+              , offering an industry-curated curriculum under the Bachelor of
+              Business Administration (BBA) programme.
+            </p>
+
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+              Designed for aspiring business leaders, entrepreneurs, and
+              management professionals, our BBA course after 12th provides the
+              perfect foundation for MBA aspirants and corporate careers.
+            </p>
+          </div>
         </div>
       </div>
 

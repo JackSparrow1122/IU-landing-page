@@ -2,12 +2,8 @@ import React from "react";
 
 // Import images
 import logo from "../assets/IULogo.png";
-import rightLogo from "../assets/IU-Website.png";
-function Navbar() {
-  const pulseTextAnimation = {
-    animation: "pulseText 2s ease-in-out infinite",
-  };
 
+function Navbar() {
   const pulseKeyframes = `
     @keyframes pulseText {
       0% {
@@ -27,30 +23,59 @@ function Navbar() {
       <style>{pulseKeyframes}</style>
 
       <nav className="bg-gray-900 shadow-lg w-full">
-        <div className="mx-auto flex flex-col sm:flex-row items-center justify-between px-4 md:px-16 py-0 md:py-2">
-
-          {/* LEFT LOGO */}
-          <div className="mt-2">
-            <a href="/">
-              <img
-                src={logo}
-                alt="Left Logo"
-                className="h-auto max-w-28 md:max-w-42"
-              />
-            </a>
-          </div>
-
-          {/* CENTER TEXT */}
-          <div
-            className="flex-grow text-center text-white text-md md:text-3xl font-bold"
-            style={pulseTextAnimation}
-          >
-          <br />
-            INDIRA UNIVERSITY SCHOOL OF BUSINESS
-          </div>
+        {/* Mobile/Tablet Layout (md se chhota) */}
+        <div className="md:hidden">
+          <div className="flex flex-col items-center py-3 px-4">
+            
+            {/* Top Row - Logos */}
+            <div className="flex justify-between w-full items-center mb-2">
+              {/* Left Logo */}
+              <div className="flex-shrink-0">
+                <a href="/">
+                  <img
+                    src={logo}
+                    alt="Left Logo"
+                    className="h-auto w-20"
+                  />
+                </a>
+              </div>
 
           
+            </div>
 
+            {/* Center Text - Mobile */}
+            <div className="text-center w-full">
+              <h1 className="text-white text-sm font-bold animate-pulseText px-2 leading-tight">
+                INDIRA UNIVERSITY<br />SCHOOL OF BUSINESS
+              </h1>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Layout (md aur bada) */}
+        <div className="hidden md:block">
+          <div className="mx-auto flex items-center justify-between px-4 md:px-8 lg:px-16 py-3 md:py-4">
+            
+            {/* LEFT LOGO */}
+            <div className="flex-shrink-0">
+              <a href="/">
+                <img
+                  src={logo}
+                  alt="Left Logo"
+                  className="h-auto w-28 lg:w-36 xl:w-42"
+                />
+              </a>
+            </div>
+
+            {/* CENTER TEXT */}
+            <div className="flex-grow flex items-center justify-center text-center px-2 md:px-4">
+              <h1 className="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold animate-pulseText whitespace-nowrap">
+                INDIRA UNIVERSITY SCHOOL OF BUSINESS
+              </h1>
+            </div>
+
+
+          </div>
         </div>
       </nav>
     </>

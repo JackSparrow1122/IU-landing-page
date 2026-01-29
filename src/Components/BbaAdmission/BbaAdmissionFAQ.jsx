@@ -29,7 +29,7 @@ const FAQ_DATA = [
   },
   {
     question: "Q7. What specializations are offered in BBA?",
-    answer: "We offer multiple specializations such as Marketing management, Financial Management, HR, Digital Marketing, Banking and Financial Services, International Business Management, Logistics and Supply Chain & Operation, Innovation and Entrepreneurship, and International Business (Global Immersion).",
+    answer: "We offer multiple specializations such as Marketing management, Financial Management, HR, Digital Marketing, Banking and Financial Services, International Business Management, Logistics and Supply Chain & Operation, Innovation and Entrepreneurship. ",
   },
   {
     question: "Q8. Is work experience required for BBA admission?",

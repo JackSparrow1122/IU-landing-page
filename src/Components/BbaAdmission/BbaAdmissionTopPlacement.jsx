@@ -115,7 +115,7 @@ const TopPlacements = () => {
             
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            TOP PLACEMENTS <br />
+            <span className="text-amber-300">TOP PLACEMENTS</span> <br />
             From Campus <br /> to Corporate
           </h2>
 
@@ -136,7 +136,7 @@ const TopPlacements = () => {
                 key={i}
                 className="
                   mx-3 flex-shrink-0
-                  w-[70vw]
+                  w-[50vw]
                   sm:w-[45vw]
                   md:w-[28vw]
                   lg:w-[15vw]
@@ -149,7 +149,7 @@ const TopPlacements = () => {
                       src={student.image}
                       alt={student.name}
                       className="
-                        w-full h-full object-cover
+                        w-full h-full object-contain md:object-cover 
                         transition-transform duration-500
                         group-hover:scale-110 object-top 
                       "
@@ -163,10 +163,10 @@ const TopPlacements = () => {
 
                   {/* NAME + COMPANY (FIXED BELOW IMAGE, LEFT) */}
                   <div className="pt-3 text-center">
-                    <h3 className="text-sm md:text-base font-semibold text-white">
+                    <h3 className="text-lg md:text-xl font-semibold text-white">
                       {student.name}
                     </h3>
-                    <p className="text-sm md:text-lg text-white bg-[#011E5A]">
+                    <p className="text-lg md:text-xl text-white bg-[#011E5A]">
                       {student.company || "Placement Achieved"}
                     </p>
                   </div>

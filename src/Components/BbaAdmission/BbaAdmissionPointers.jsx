@@ -19,12 +19,7 @@ const POINTERS_DATA = [
     ),
     icon: FaRegClock,
   },
-  // {
-  //   id: 2,
-  //   title: "Average CTC",
-  //   value: "6-8 LPA",
-  //   icon: FaChartLine,
-  // },
+
   {
     id: 3,
     title: "Highest CTC",
@@ -34,14 +29,14 @@ const POINTERS_DATA = [
 
   {
     id: 4,
-    title: "Top Recruiters",
-    value: "300+",
+    title: "300+",
+    value: "Top Recruiters",
     icon: FaUserTie,
   },
   {
     id: 5,
-    title: "Placement Assistance",
-    value: "100%",
+    title: "100%",
+    value: "Placement Assistance",
     icon: FaCheckCircle,
   },
 ];
@@ -61,11 +56,11 @@ function MarketingManagementPointers() {
           >
             <Icon size={30} className="text-[#023B5E]" />
 
-            <h2 className="text-[#135783] text-sm md:text-base font-semibold mt-2 text-center">
+            <h2 className="text-[#135783] text-xl md:text-xl font-semibold mt-2 text-center">
               {title}
             </h2>
 
-            <p className="text-[#135783] text-lg md:text-xl text-center mt-1">
+            <p className="text-[#135783] text-xl md:text-xl text-center mt-1">
               {value}
             </p>
           </div>

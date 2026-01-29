@@ -8,21 +8,21 @@ const data = [
     id: 1,
     title: "Events",
     description:
-      "Indira University Pune hosts year-round events including Management Fests, Corporate Conclaves, Start-up Summits, CEO talks, industry visits, placement drives, workshops, certifications, cultural fests, and sports tournaments that transform BBA students into industry-ready professionals.",
+      "Experience exciting Annual Fest with diverse cultural activities, concerts, Industry Events including corporate conclaves, executive talks, placement drives, and workshops on; leadership, industry readiness, skill development; and Cultural Celebrations featuring festivals, talent shows, fresher's welcome, farewell parties, and sports tournaments that create well-rounded BBA professionals. ",
     image: img2,
   },
   {
     id: 2,
     title: "Facilities",
     description:
-      "Our campus features smart classrooms, SAP & Tally labs, Bloomberg Terminal, Innovation Center, Digital Marketing Lab, AC hostels, sports complex, cafeteria, auditorium, medical center, and full placement support.",
+      "Smart classrooms, computer labs, library with e-resources, Innovation and Entrepreneurship Center for startups, AC hostels with Wi-Fi, cafeteria, sports complex, gymnasium, medical center, placement cell, and modern auditorium for comprehensive BBA education in Pune. ",
     image: img3,
   },
   {
     id: 3,
     title: "Student Clubs",
     description:
-      "Marketing, Finance, Entrepreneurship, HR, International Business, Digital Marketing, Public Speaking, CSR, Cultural and Sports Clubs provide leadership roles, networking, resume-building and placement advantages.",
+      "Marketing Club, Finance Club, HR Club, Digital Marketing Club, Innovation & Entrepreneurship Club, International Business Club, Current Affairs Club, IT Club, Sync Cultural Club, Music Club, Media Club and many more; these clubs  offer leadership opportunities, industry networking, skill development, and resume-building experience for BBA students. ",
     image: img1,
   },
 ];
@@ -37,16 +37,17 @@ export default function CampusFacilities() {
   // Function for dot click navigation
   const handleDotClick = (index) => {
     if (isScrollingRef.current) return;
-    
+
     isScrollingRef.current = true;
     setActiveIndex(index);
-    
+
     // Smooth scroll to section
     if (sectionRef.current) {
       const section = sectionRef.current;
       const sectionHeight = section.clientHeight;
-      const targetScroll = section.offsetTop + (index * sectionHeight) / data.length;
-      
+      const targetScroll =
+        section.offsetTop + (index * sectionHeight) / data.length;
+
       window.scrollTo({
         top: targetScroll,
         behavior: "smooth",
@@ -66,17 +67,17 @@ export default function CampusFacilities() {
       const now = Date.now();
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
-      
+
       // Only update if section is in view and enough time has passed
       if (now - lastScrollTimeRef.current < 800) return;
-      
+
       if (rect.top <= 0 && rect.bottom >= 0) {
         const scrollProgress = -rect.top / rect.height;
         const newIndex = Math.min(
-          data.length - 1, 
-          Math.max(0, Math.floor(scrollProgress * data.length))
+          data.length - 1,
+          Math.max(0, Math.floor(scrollProgress * data.length)),
         );
-        
+
         if (newIndex !== activeIndex) {
           lastScrollTimeRef.current = now;
           setActiveIndex(newIndex);
@@ -95,20 +96,22 @@ export default function CampusFacilities() {
 
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
-      
+
       // Check if we're inside the section
       if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
         const delta = Math.sign(e.deltaY);
-        const direction = delta > 0 ? 'down' : 'up';
-        
+        const direction = delta > 0 ? "down" : "up";
+
         // Prevent default only when at boundaries to avoid locking
-        if ((direction === 'down' && activeIndex === data.length - 1) ||
-            (direction === 'up' && activeIndex === 0)) {
+        if (
+          (direction === "down" && activeIndex === data.length - 1) ||
+          (direction === "up" && activeIndex === 0)
+        ) {
           return; // Allow normal scroll at boundaries
         }
-        
+
         e.preventDefault();
-        
+
         // Calculate next index
         let newIndex = activeIndex;
         if (delta > 0) {
@@ -116,7 +119,7 @@ export default function CampusFacilities() {
         } else if (delta < 0) {
           newIndex = Math.max(0, activeIndex - 1);
         }
-        
+
         if (newIndex !== activeIndex) {
           handleDotClick(newIndex);
         }
@@ -131,10 +134,10 @@ export default function CampusFacilities() {
   useEffect(() => {
     const handleTouchStart = (e) => {
       if (!sectionRef.current) return;
-      
+
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
-      
+
       if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
         touchStartYRef.current = e.touches[0].clientY;
       }
@@ -142,27 +145,27 @@ export default function CampusFacilities() {
 
     const handleTouchEnd = (e) => {
       if (!sectionRef.current || isScrollingRef.current) return;
-      
+
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
-      
+
       if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
         const touchEndY = e.changedTouches[0].clientY;
         const deltaY = touchStartYRef.current - touchEndY;
-        
+
         // Minimum swipe distance
         if (Math.abs(deltaY) < 50) return;
-        
-        const direction = deltaY > 0 ? 'down' : 'up';
-        
+
+        const direction = deltaY > 0 ? "down" : "up";
+
         // Calculate next index
         let newIndex = activeIndex;
-        if (direction === 'down') {
+        if (direction === "down") {
           newIndex = Math.min(data.length - 1, activeIndex + 1);
         } else {
           newIndex = Math.max(0, activeIndex - 1);
         }
-        
+
         if (newIndex !== activeIndex) {
           handleDotClick(newIndex);
         }
@@ -171,7 +174,7 @@ export default function CampusFacilities() {
 
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
     window.addEventListener("touchend", handleTouchEnd, { passive: true });
-    
+
     return () => {
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchend", handleTouchEnd);
@@ -185,10 +188,10 @@ export default function CampusFacilities() {
 
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
-      
+
       if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
         let newIndex = activeIndex;
-        
+
         if (e.key === "ArrowDown" || e.key === "ArrowRight") {
           e.preventDefault();
           newIndex = Math.min(data.length - 1, activeIndex + 1);
@@ -198,7 +201,7 @@ export default function CampusFacilities() {
         } else {
           return;
         }
-        
+
         if (newIndex !== activeIndex) {
           handleDotClick(newIndex);
         }
@@ -260,20 +263,19 @@ export default function CampusFacilities() {
                   <span className="inline-block px-4 py-1 bg-gradient-to-r from-[#FCC409] to-[#FFD700] text-black text-sm font-semibold rounded-full mb-4">
                     Campus Highlights
                   </span>
-                  
+
                   <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white leading-tight">
                     {item.title}
                   </h2>
-                  
+
                   <div className="w-24 h-1 bg-gradient-to-r from-[#FCC409] to-[#FFD700] mx-auto mb-8"></div>
-                  
+
                   <div className="max-w-3xl mx-auto">
                     <p className="text-lg md:text-xl text-white/90 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
                 </div>
-
               </div>
             ))}
           </div>
@@ -313,9 +315,13 @@ export default function CampusFacilities() {
       </div>
 
       {/* Scroll hint */}
-      <div className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-300 flex flex-col items-center ${
-        activeIndex === data.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100'
-      }`}>
+      <div
+        className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-300 flex flex-col items-center ${
+          activeIndex === data.length - 1
+            ? "opacity-0 pointer-events-none"
+            : "opacity-100"
+        }`}
+      >
         <span className="text-white/70 text-sm mb-2">Scroll down</span>
         <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-gradient-to-b from-[#FCC409] to-[#FFD700] rounded-full mt-2 animate-bounce" />

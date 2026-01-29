@@ -79,7 +79,7 @@ const specializations = [
     ]
   },
   {
-    name: "Digital Marketing",
+    name: "Digital Marketing ",
     duration: "3 Years",
     fees: "₹1,50,000/year",
     image: digitalMarketingImage,
@@ -171,145 +171,95 @@ function BbaAdmissionCourses() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [open, setOpen] = useState(false);
 
-  const currentSpecialization = specializations[selectedIndex];
+  const current = specializations[selectedIndex];
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="px-8 md:px-16 py-12 bg-white poppins-regular"
-    >
+    <motion.div className="px-4 sm:px-8 md:px-16 py-12 bg-white poppins-regular">
       {/* Heading */}
-      <motion.div
-        variants={fadeUp}
-        transition={{ duration: 0.6 }}
-        className="mb-12"
-      >
-        <h2 className="text-4xl font-bold mb-4 text-black">
-          Explore BBA Specializations at Indira University Pune
+      <motion.div variants={fadeUp} className="mb-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">
+          Explore BBA Specializations
         </h2>
-        <p className="text-lg text-gray-700">
-          Choose from India's most comprehensive range of BBA courses designed for career excellence
+        <p className="text-gray-600 text-base sm:text-lg">
+          Choose from India's most comprehensive range of BBA courses
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
-        {/* LEFT SIDE LIST */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ staggerChildren: 0.08 }}
-          className="md:col-span-5 lg:col-span-4 flex flex-col gap-2"
-        >
-          {specializations.map((course, index) => {
-            const isSelected = selectedIndex === index;
-
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+        {/* LEFT LIST */}
+        <div className="md:col-span-4 flex md:flex-col md:gap-8 overflow-x-auto md:overflow-visible pb-2">
+          {specializations.map((item, index) => {
+            const active = index === selectedIndex;
             return (
-              <motion.div
+              <div
                 key={index}
-                variants={fadeUp}
-                whileHover={{ scale: 1.015 }}
                 onClick={() => setSelectedIndex(index)}
-                className="cursor-pointer"
+                className={`whitespace-nowrap px-5 py-3 rounded-full cursor-pointer transition ${
+                  active
+                    ? "bg-[#fcc409] font-semibold"
+                    : "text-gray-600 hover:text-black text-lg"
+                }`}
               >
-                <div
-                  className={`flex items-center justify-between px-6 py-5 rounded-full transition-colors duration-300 ${
-                    isSelected
-                      ? "bg-[#fcc409] text-black"
-                      : "text-gray-600 hover:text-black"
-                  }`}
-                >
-                  <span className="text-lg font-medium">{course.name}</span>
-                  {isSelected && <span className="text-2xl">→</span>}
-                </div>
-
-                {!isSelected && <hr className="border-gray-200 mx-6" />}
-              </motion.div>
+                {item.name}
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* RIGHT SIDE CONTENT */}
-        <div className="md:col-span-7 lg:col-span-8 relative">
-          <div className="hidden md:block absolute -left-8 top-0 h-full w-px bg-gray-200" />
-
+        {/* RIGHT CONTENT */}
+        <div className="md:col-span-8">
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedIndex}
+              variants={fadeSide}
               initial="hidden"
               animate="visible"
               exit={{ opacity: 0 }}
-              variants={fadeSide}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              <div className="mb-10">
-                <h3 className="text-2xl font-bold text-[#b1124a] mb-4">
-                  {currentSpecialization.name}
-                </h3>
-                
-                <div className="flex flex-wrap gap-4 mb-6">
-                  <div className="bg-gray-100 px-4 py-2 rounded-lg">
-                    <span className="text-gray-600 text-sm">Duration:</span>
-                    <span className="ml-2 font-medium">{currentSpecialization.duration}</span>
-                  </div>
-                  <div className="bg-gray-100 px-4 py-2 rounded-lg">
-                    <span className="text-gray-600 text-sm">Fees:</span>
-                    <span className="ml-2 font-medium">{currentSpecialization.fees}</span>
-                  </div>
-                </div>
+              <h3 className="text-xl sm:text-3xl font-bold text-[#b1124a] mb-4">
+                {current.name}
+              </h3>
 
-                <p className="text-gray-700 leading-8 mb-8 text-lg">
-                  {currentSpecialization.description}
-                </p>
+              <div className="flex flex-wrap gap-3 mb-5">
+                <span className="bg-gray-100 px-4 py-1 rounded-lg text-sm">
+                  Duration: {current.duration}
+                </span>
+                <span className="bg-gray-100 px-4 py-1 rounded-lg text-sm">
+                  Fees: {current.fees}
+                </span>
               </div>
 
-              {/* Restructured Section: Career Opportunities (Left) + Image (Right) */}
-              <div className="flex flex-col lg:flex-row gap-8 mb-12">
-                {/* LEFT: Career Opportunities */}
-                <div className="lg:w-1/2">
-                  <h3 className="text-xl font-semibold text-[#b1124a] mb-6">
-                    Top Career Opportunities
-                  </h3>
+              <p className="text-gray-700 leading-7 mb-8">
+                {current.description}
+              </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6">
-                    {currentSpecialization.careerOutcomes.map((outcome, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                        className="flex items-center gap-3"
-                      >
-                        <span className="text-[#b1124a]">✔</span>
-                        <span className="font-medium">{outcome}</span>
-                      </motion.div>
+              <div className="grid lg:grid-cols-2 gap-8 mb-10">
+                <div>
+                  <h4 className="font-semibold mb-4 text-[#b1124a]">
+                    Career Opportunities
+                  </h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {current.careerOutcomes.map((c, i) => (
+                      <li key={i} className="flex gap-2">
+                        ✔ {c}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
-                {/* RIGHT: Image */}
-                <div className="lg:w-1/2">
-                  <div className=" ">
-                    <img 
-                      src={currentSpecialization.image}
-                      alt={currentSpecialization.name}
-                      className="w-full h-64 object-contain"
-                    />
-                   
-                  </div>
-                </div>
+                <img
+                  src={current.image}
+                  alt={current.name}
+                  className="w-full h-56 sm:h-64 object-contain"
+                />
               </div>
 
-              {/* CTA Button */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <button
                 onClick={() => setOpen(true)}
-                className="mt-4 bg-[#b1124a] text-white w-full px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#90103d] transition-colors duration-300"
+                className="w-full bg-[#b1124a] text-white py-3 rounded-lg font-semibold hover:bg-[#90103d]"
               >
-                Apply Now for {currentSpecialization.name}
-              </motion.button>
+                Apply Now for {current.name}
+              </button>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -322,15 +272,7 @@ function BbaAdmissionCourses() {
         </Box>
       </Modal>
 
-      {/* Toast */}
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        newestOnTop
-        closeOnClick
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer position="top-center" autoClose={3000} />
     </motion.div>
   );
 }

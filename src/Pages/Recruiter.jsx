@@ -86,27 +86,14 @@ const CompRecruiter = () => {
     };
   }, []);
 
-  // Dynamic rows based on screen size
+  // Dynamic rows - always 3 rows for all screen sizes
   const getRows = () => {
-    if (isMobile) {
-      // Mobile: 1 row with all logos
-      return [logos];
-    } else if (isTablet) {
-      // Tablet: 2 rows
-      const logosPerRow = Math.ceil(logos.length / 2);
-      return [
-        logos.slice(0, logosPerRow),
-        logos.slice(logosPerRow, logosPerRow * 2)
-      ];
-    } else {
-      // Desktop: 3 rows
-      const logosPerRow = Math.ceil(logos.length / 3);
-      return [
-        logos.slice(0, logosPerRow),
-        logos.slice(logosPerRow, logosPerRow * 2),
-        logos.slice(logosPerRow * 2)
-      ];
-    }
+    const logosPerRow = Math.ceil(logos.length / 3);
+    return [
+      logos.slice(0, logosPerRow),
+      logos.slice(logosPerRow, logosPerRow * 2),
+      logos.slice(logosPerRow * 2)
+    ];
   };
 
   // Render a single row of logos
@@ -127,8 +114,8 @@ const CompRecruiter = () => {
           {logosArray.map((logo, index) => (
             <div
               key={`row-${rowIndex}-${index}`}
-              className="logo-slide flex-none mx-1 sm:mx-2 md:mx-3 lg:mx-4
-                         bg-white rounded-lg sm:rounded-xl
+              className="logo-slide flex-none mx-1.5 sm:mx-2 md:mx-3 lg:mx-4
+                         bg-white rounded-lg sm:rounded-xl md:rounded-2xl
                          border border-[#2899A4]/30 sm:border-[#2899A4]/40
                          shadow-[0_4px_12px_rgba(40,153,164,0.15)] sm:shadow-[0_6px_20px_rgba(40,153,164,0.25)]
                          transition-all duration-300 ease-in-out
@@ -139,9 +126,9 @@ const CompRecruiter = () => {
               <img
                 src={logo}
                 alt={`Recruiter Logo ${rowIndex * logosArray.length + index + 1}`}
-                className="h-10 sm:h-14 md:h-16 lg:h-20 xl:h-24 
-                           max-w-[80px] sm:max-w-[100px] md:max-w-[120px] lg:max-w-[140px] xl:max-w-[160px]
-                           object-contain p-1 sm:p-2 md:p-3"
+                className="h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 
+                           max-w-[100px] sm:max-w-[120px] md:max-w-[140px] lg:max-w-[160px] xl:max-w-[180px]
+                           object-contain p-2 sm:p-3 md:p-4"
                 loading="lazy"
               />
             </div>
@@ -151,8 +138,8 @@ const CompRecruiter = () => {
           {logosArray.map((logo, index) => (
             <div
               key={`row-${rowIndex}-duplicate-${index}`}
-              className="logo-slide flex-none mx-1 sm:mx-2 md:mx-3 lg:mx-4
-                         bg-white rounded-lg sm:rounded-xl
+              className="logo-slide flex-none mx-1.5 sm:mx-2 md:mx-3 lg:mx-4
+                         bg-white rounded-lg sm:rounded-xl md:rounded-2xl
                          border border-[#2899A4]/30 sm:border-[#2899A4]/40
                          shadow-[0_4px_12px_rgba(40,153,164,0.15)] sm:shadow-[0_6px_20px_rgba(40,153,164,0.25)]
                          transition-all duration-300 ease-in-out
@@ -163,9 +150,9 @@ const CompRecruiter = () => {
               <img
                 src={logo}
                 alt={`Recruiter Logo ${rowIndex * logosArray.length + index + 1}`}
-                className="h-10 sm:h-14 md:h-16 lg:h-20 xl:h-24 
-                           max-w-[80px] sm:max-w-[100px] md:max-w-[120px] lg:max-w-[140px] xl:max-w-[160px]
-                           object-contain p-1 sm:p-2 md:p-3"
+                className="h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 
+                           max-w-[100px] sm:max-w-[120px] md:max-w-[140px] lg:max-w-[160px] xl:max-w-[180px]
+                           object-contain p-2 sm:p-3 md:p-4"
                 loading="lazy"
               />
             </div>
@@ -176,17 +163,17 @@ const CompRecruiter = () => {
   };
 
   const rows = getRows();
-  const animationDirections = ["left", "right", "left"]; // Pattern for desktop
+  const animationDirections = ["left", "right", "left"];
 
   return (
     <div className="logo-slider-section py-6 sm:py-8 md:py-10 lg:py-12 roboto-regular overflow-hidden bg-white">
       {/* Heading */}
       <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4 sm:px-6 md:px-8">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
                        font-bold text-[#011E5A] mb-2 md:mb-3 lg:mb-4">
           Top Recruiters
         </h2>
-        <p className="text-gray-600 text-xs sm:text-sm md:text-base lg:text-lg 
+        <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl 
                      max-w-2xl sm:max-w-3xl md:max-w-4xl mx-auto
                      px-2 sm:px-4 md:px-6 lg:px-8">
           Three decades of excellence, thousands of successful careers, and a
@@ -195,52 +182,45 @@ const CompRecruiter = () => {
       </div>
 
       {/* Logo Slider */}
-      <div className="logo-slider-container relative w-full  mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
-        {/* Render rows */}
+      <div className="logo-slider-container relative w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+        {/* Render all 3 rows */}
         {rows.map((rowLogos, index) => (
           renderLogoRow(
             rowLogos, 
             index + 1, 
-            isMobile ? "left" : (isTablet ? (index % 2 === 0 ? "left" : "right") : animationDirections[index])
+            animationDirections[index]
           )
         ))}
 
         {/* Fade edges for each row */}
-        <div className="absolute left-0 top-0 h-full w-8 sm:w-12 md:w-16 lg:w-20 xl:w-24 
+        <div className="absolute left-0 top-0 h-full w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 
                        bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 h-full w-8 sm:w-12 md:w-16 lg:w-20 xl:w-24 
+        <div className="absolute right-0 top-0 h-full w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 
                        bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
       </div>
 
-      {/* Mobile indicator dots */}
-      {isMobile && (
-        <div className="flex justify-center items-center mt-4 space-x-2">
-          <div className="w-2 h-2 rounded-full bg-[#2899A4] opacity-100"></div>
-          <div className="text-xs text-gray-500">Swipe to see more →</div>
-        </div>
-      )}
-
+     
       {/* CSS */}
       <style>{`
         .logo-slider-container {
-          padding: 0 4px;
+          padding: 0 8px;
         }
 
         @media (min-width: 640px) {
-          .logo-slider-container {
-            padding: 0 8px;
-          }
-        }
-
-        @media (min-width: 768px) {
           .logo-slider-container {
             padding: 0 12px;
           }
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 768px) {
           .logo-slider-container {
             padding: 0 16px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .logo-slider-container {
+            padding: 0 20px;
           }
         }
 
@@ -282,15 +262,20 @@ const CompRecruiter = () => {
         /* Mobile (xs - sm) */
         @media (max-width: 639px) {
           .logo-row-track.animate {
-            animation-duration: 40s;
+            animation-duration: 30s;
           }
           
           .logo-row-track.reverse-animation.animate {
-            animation-duration: 35s;
+            animation-duration: 28s;
+          }
+          
+          /* Reduce margin for mobile */
+          .logo-row {
+            margin-bottom: 8px;
           }
         }
 
-        /* Small tablets (sm - md) */
+        /* Small devices (sm - md) */
         @media (min-width: 640px) and (max-width: 767px) {
           .logo-row:nth-child(1) .logo-row-track.animate {
             animation-duration: 35s;
@@ -298,6 +283,10 @@ const CompRecruiter = () => {
           
           .logo-row:nth-child(2) .logo-row-track.reverse-animation.animate {
             animation-duration: 32s;
+          }
+          
+          .logo-row:nth-child(3) .logo-row-track.animate {
+            animation-duration: 38s;
           }
         }
 
@@ -308,27 +297,16 @@ const CompRecruiter = () => {
           }
           
           .logo-row:nth-child(2) .logo-row-track.reverse-animation.animate {
-            animation-duration: 40s;
+            animation-duration: 42s;
+          }
+          
+          .logo-row:nth-child(3) .logo-row-track.animate {
+            animation-duration: 48s;
           }
         }
 
         /* Desktop (lg - xl) */
         @media (min-width: 1024px) and (max-width: 1279px) {
-          .logo-row:nth-child(1) .logo-row-track.animate {
-            animation-duration: 50s;
-          }
-          
-          .logo-row:nth-child(2) .logo-row-track.reverse-animation.animate {
-            animation-duration: 45s;
-          }
-          
-          .logo-row:nth-child(3) .logo-row-track.animate {
-            animation-duration: 55s;
-          }
-        }
-
-        /* Large Desktop (xl+) */
-        @media (min-width: 1280px) {
           .logo-row:nth-child(1) .logo-row-track.animate {
             animation-duration: 60s;
           }
@@ -339,6 +317,21 @@ const CompRecruiter = () => {
           
           .logo-row:nth-child(3) .logo-row-track.animate {
             animation-duration: 65s;
+          }
+        }
+
+        /* Large Desktop (xl+) */
+        @media (min-width: 1280px) {
+          .logo-row:nth-child(1) .logo-row-track.animate {
+            animation-duration: 70s;
+          }
+          
+          .logo-row:nth-child(2) .logo-row-track.reverse-animation.animate {
+            animation-duration: 65s;
+          }
+          
+          .logo-row:nth-child(3) .logo-row-track.animate {
+            animation-duration: 75s;
           }
         }
 
