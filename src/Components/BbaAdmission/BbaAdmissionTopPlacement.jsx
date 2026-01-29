@@ -115,7 +115,7 @@ const TopPlacements = () => {
             
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            <span className="text-amber-300">TOP PLACEMENTS</span> <br />
+            <span className="text-amber-300 md:py-4">TOP PLACEMENTS</span> <br />
             From Campus <br /> to Corporate
           </h2>
 
