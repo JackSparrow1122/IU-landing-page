@@ -83,7 +83,7 @@ const BBAAdmissionProcess = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-[#011E5A] mb-4">
-              BBA Admission <span className="text-[#990000]"> Open 2026-2027</span>
+              BBA Admission <span className="text-[#990000]"> Open For 2026-2027</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-medium">
               How to Apply for BBA at Indira University?
