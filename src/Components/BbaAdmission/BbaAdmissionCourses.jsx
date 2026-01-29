@@ -79,7 +79,7 @@ const specializations = [
     ]
   },
   {
-    name: "Digital Marketing ",
+    name: "Digital Marketing Management",
     duration: "3 Years",
     fees: "₹1,50,000/year",
     image: digitalMarketingImage,
