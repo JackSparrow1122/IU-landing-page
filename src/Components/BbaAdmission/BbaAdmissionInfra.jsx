@@ -8,7 +8,7 @@ const data = [
     id: 1,
     title: "Events",
     description:
-      "Experience exciting Annual Fest with diverse cultural activities, concerts, Industry Events including corporate conclaves, executive talks, placement drives, and workshops on: leadership, industry readiness, skill development; and Cultural Celebrations featuring festivals, talent shows, fresher's welcome, farewell parties, and sports tournaments that create well-rounded BBA professionals. ",
+      "Experience exciting Annual Fest with diverse cultural activities, concerts, Industry Events including corporate conclaves, executive talks, placement drives, and workshops on leadership, industry readiness, skill development, and Cultural Celebrations featuring festivals, talent shows, fresher's induction, farewell parties, and sports tournaments that create well-rounded BBA professionals. ",
     image: img2,
   },
   {
